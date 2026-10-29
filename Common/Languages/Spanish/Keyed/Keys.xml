@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RimEmbark_Title>Filtros de aterrizaje</RimEmbark_Title>
+  <RimEmbark_OpenFilters>Filtros de aterrizaje</RimEmbark_OpenFilters>
+  <RimEmbark_Analyzing>Analizando el mundo... {0}</RimEmbark_Analyzing>
+  <RimEmbark_Searching>Buscando...</RimEmbark_Searching>
+  <RimEmbark_NoFilters>Sin filtros. Se puede asentar en {0} lugares.</RimEmbark_NoFilters>
+  <RimEmbark_Matches>{0} de {1} lugares coinciden</RimEmbark_Matches>
+  <RimEmbark_RandomMatch>Al azar</RimEmbark_RandomMatch>
+  <RimEmbark_RandomMatchTip>Selecciona un lugar coincidente al azar y mueve la cámara hasta él.</RimEmbark_RandomMatchTip>
+  <RimEmbark_Reset>Restablecer</RimEmbark_Reset>
+  <RimEmbark_Overlay>Resaltar</RimEmbark_Overlay>
+  <RimEmbark_Search>Buscar filtros...</RimEmbark_Search>
+  <RimEmbark_ClearCategory>Vaciar esta categoría</RimEmbark_ClearCategory>
+  <RimEmbark_MatchAll>Todos</RimEmbark_MatchAll>
+  <RimEmbark_MatchAny>Alguno</RimEmbark_MatchAny>
+  <RimEmbark_MatchModeTip>Todos: el lugar debe tener todas las opciones incluidas.\nAlguno: el lugar debe tener al menos una opción incluida.\n\nLas opciones excluidas nunca se permiten.</RimEmbark_MatchModeTip>
+  <RimEmbark_ActiveCount>{0} activos</RimEmbark_ActiveCount>
+  <RimEmbark_CategorySummary>+{0} −{1}</RimEmbark_CategorySummary>
+  <RimEmbark_IncludedOption>+ {0}</RimEmbark_IncludedOption>
+  <RimEmbark_ExcludedOption>− {0}</RimEmbark_ExcludedOption>
+  <RimEmbark_OptionTip>Haz clic para alternar: cualquiera, incluir (+), excluir (−). El número indica cuántos lugares habitables lo tienen.</RimEmbark_OptionTip>
+  <RimEmbark_IncludeTip>Incluir (+): mostrar solo los lugares que lo tienen.</RimEmbark_IncludeTip>
+  <RimEmbark_ExcludeTip>Excluir (−): ocultar los lugares que lo tienen.</RimEmbark_ExcludeTip>
+  <RimEmbark_Ranges>Clima y geografía</RimEmbark_Ranges>
+  <RimEmbark_AvgTemp>Temperatura media</RimEmbark_AvgTemp>
+  <RimEmbark_MinTemp>Temperatura más fría</RimEmbark_MinTemp>
+  <RimEmbark_MaxTemp>Temperatura más cálida</RimEmbark_MaxTemp>
+  <RimEmbark_GrowingPeriod>Periodo de cultivo</RimEmbark_GrowingPeriod>
+  <RimEmbark_Rainfall>Precipitaciones</RimEmbark_Rainfall>
+  <RimEmbark_Elevation>Elevación</RimEmbark_Elevation>
+  <RimEmbark_AnimalDensity>Densidad animal</RimEmbark_AnimalDensity>
+  <RimEmbark_MovementDifficulty>Dificultad de movimiento</RimEmbark_MovementDifficulty>
+  <RimEmbark_Pollution>Contaminación</RimEmbark_Pollution>
+  <RimEmbark_SettlementDistance>Distancia a la base de facción más cercana</RimEmbark_SettlementDistance>
+  <RimEmbark_ValueDays>{0} días</RimEmbark_ValueDays>
+  <RimEmbark_ValueMm>{0} mm</RimEmbark_ValueMm>
+  <RimEmbark_ValueMeters>{0} m</RimEmbark_ValueMeters>
+  <RimEmbark_ValueTiles>{0} casillas</RimEmbark_ValueTiles>
+  <RimEmbark_Biome>Bioma</RimEmbark_Biome>
+  <RimEmbark_Terrain>Terreno</RimEmbark_Terrain>
+  <RimEmbark_Stone>Tipos de piedra</RimEmbark_Stone>
+  <RimEmbark_River>Río</RimEmbark_River>
+  <RimEmbark_Road>Carretera</RimEmbark_Road>
+  <RimEmbark_Feature>Características del mapa</RimEmbark_Feature>
+  <RimEmbark_Landmark>Lugar emblemático</RimEmbark_Landmark>
+  <RimEmbark_Other>Otros</RimEmbark_Other>
+  <RimEmbark_Coastal>Costero</RimEmbark_Coastal>
+  <RimEmbark_AnyRiver>Cualquier río</RimEmbark_AnyRiver>
+  <RimEmbark_AnyRoad>Cualquier carretera</RimEmbark_AnyRoad>
+  <RimEmbark_AnyLandmark>Cualquier lugar emblemático</RimEmbark_AnyLandmark>
+  <RimEmbark_ExtremeBiome>Bioma extremo</RimEmbark_ExtremeBiome>
+</LanguageData>

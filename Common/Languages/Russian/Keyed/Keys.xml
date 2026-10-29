@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RimEmbark_Title>Фильтры высадки</RimEmbark_Title>
+  <RimEmbark_OpenFilters>Фильтры высадки</RimEmbark_OpenFilters>
+  <RimEmbark_Analyzing>Анализ мира... {0}</RimEmbark_Analyzing>
+  <RimEmbark_Searching>Поиск...</RimEmbark_Searching>
+  <RimEmbark_NoFilters>Фильтры не заданы. Доступно для поселения: {0}.</RimEmbark_NoFilters>
+  <RimEmbark_Matches>Подходит: {0} из {1}</RimEmbark_Matches>
+  <RimEmbark_RandomMatch>Случайная</RimEmbark_RandomMatch>
+  <RimEmbark_RandomMatchTip>Выбрать случайное подходящее место и перевести к нему камеру.</RimEmbark_RandomMatchTip>
+  <RimEmbark_Reset>Сбросить</RimEmbark_Reset>
+  <RimEmbark_Overlay>Подсветка</RimEmbark_Overlay>
+  <RimEmbark_Search>Поиск фильтров...</RimEmbark_Search>
+  <RimEmbark_ClearCategory>Очистить категорию</RimEmbark_ClearCategory>
+  <RimEmbark_MatchAll>Все</RimEmbark_MatchAll>
+  <RimEmbark_MatchAny>Любой</RimEmbark_MatchAny>
+  <RimEmbark_MatchModeTip>Все: у места должны быть все включённые варианты.\nЛюбой: у места должен быть хотя бы один включённый вариант.\n\nИсключённые варианты не допускаются никогда.</RimEmbark_MatchModeTip>
+  <RimEmbark_ActiveCount>активно: {0}</RimEmbark_ActiveCount>
+  <RimEmbark_CategorySummary>+{0} −{1}</RimEmbark_CategorySummary>
+  <RimEmbark_IncludedOption>+ {0}</RimEmbark_IncludedOption>
+  <RimEmbark_ExcludedOption>− {0}</RimEmbark_ExcludedOption>
+  <RimEmbark_OptionTip>Нажмите для переключения: любое, включить (+), исключить (−). Число — сколько доступных для поселения мест имеют это.</RimEmbark_OptionTip>
+  <RimEmbark_IncludeTip>Включить (+): показывать только места, где это есть.</RimEmbark_IncludeTip>
+  <RimEmbark_ExcludeTip>Исключить (−): скрыть места, где это есть.</RimEmbark_ExcludeTip>
+  <RimEmbark_Ranges>Климат и география</RimEmbark_Ranges>
+  <RimEmbark_AvgTemp>Средняя температура</RimEmbark_AvgTemp>
+  <RimEmbark_MinTemp>Самая низкая температура</RimEmbark_MinTemp>
+  <RimEmbark_MaxTemp>Самая высокая температура</RimEmbark_MaxTemp>
+  <RimEmbark_GrowingPeriod>Период роста</RimEmbark_GrowingPeriod>
+  <RimEmbark_Rainfall>Осадки</RimEmbark_Rainfall>
+  <RimEmbark_Elevation>Высота</RimEmbark_Elevation>
+  <RimEmbark_AnimalDensity>Плотность животных</RimEmbark_AnimalDensity>
+  <RimEmbark_MovementDifficulty>Сложность передвижения</RimEmbark_MovementDifficulty>
+  <RimEmbark_Pollution>Загрязнение</RimEmbark_Pollution>
+  <RimEmbark_SettlementDistance>Расстояние до ближайшей базы фракции</RimEmbark_SettlementDistance>
+  <RimEmbark_ValueDays>{0} дн.</RimEmbark_ValueDays>
+  <RimEmbark_ValueMm>{0} мм</RimEmbark_ValueMm>
+  <RimEmbark_ValueMeters>{0} м</RimEmbark_ValueMeters>
+  <RimEmbark_ValueTiles>{0} клеток</RimEmbark_ValueTiles>
+  <RimEmbark_Biome>Биом</RimEmbark_Biome>
+  <RimEmbark_Terrain>Рельеф</RimEmbark_Terrain>
+  <RimEmbark_Stone>Типы камня</RimEmbark_Stone>
+  <RimEmbark_River>Река</RimEmbark_River>
+  <RimEmbark_Road>Дорога</RimEmbark_Road>
+  <RimEmbark_Feature>Особенности карты</RimEmbark_Feature>
+  <RimEmbark_Landmark>Достопримечательность</RimEmbark_Landmark>
+  <RimEmbark_Other>Прочее</RimEmbark_Other>
+  <RimEmbark_Coastal>Побережье</RimEmbark_Coastal>
+  <RimEmbark_AnyRiver>Любая река</RimEmbark_AnyRiver>
+  <RimEmbark_AnyRoad>Любая дорога</RimEmbark_AnyRoad>
+  <RimEmbark_AnyLandmark>Любая достопримечательность</RimEmbark_AnyLandmark>
+  <RimEmbark_ExtremeBiome>Экстремальный биом</RimEmbark_ExtremeBiome>
+</LanguageData>

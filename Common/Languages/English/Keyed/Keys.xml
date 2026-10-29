@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RimEmbark_Title>Embark filters</RimEmbark_Title>
+  <RimEmbark_OpenFilters>Embark filters</RimEmbark_OpenFilters>
+  <RimEmbark_Analyzing>Analyzing world... {0}</RimEmbark_Analyzing>
+  <RimEmbark_Searching>Searching...</RimEmbark_Searching>
+  <RimEmbark_NoFilters>No filters set. {0} sites can be settled.</RimEmbark_NoFilters>
+  <RimEmbark_Matches>{0} of {1} sites match</RimEmbark_Matches>
+  <RimEmbark_RandomMatch>Random match</RimEmbark_RandomMatch>
+  <RimEmbark_RandomMatchTip>Select a random matching site and move the camera to it.</RimEmbark_RandomMatchTip>
+  <RimEmbark_Reset>Reset</RimEmbark_Reset>
+  <RimEmbark_Overlay>Highlight</RimEmbark_Overlay>
+  <RimEmbark_Search>Search filters...</RimEmbark_Search>
+  <RimEmbark_ClearCategory>Clear this category</RimEmbark_ClearCategory>
+  <RimEmbark_MatchAll>All of</RimEmbark_MatchAll>
+  <RimEmbark_MatchAny>Any of</RimEmbark_MatchAny>
+  <RimEmbark_MatchModeTip>All of: a site must have every included option.\nAny of: a site must have at least one included option.\n\nExcluded options are never allowed.</RimEmbark_MatchModeTip>
+  <RimEmbark_ActiveCount>{0} active</RimEmbark_ActiveCount>
+  <RimEmbark_CategorySummary>+{0} −{1}</RimEmbark_CategorySummary>
+  <RimEmbark_IncludedOption>+ {0}</RimEmbark_IncludedOption>
+  <RimEmbark_ExcludedOption>− {0}</RimEmbark_ExcludedOption>
+  <RimEmbark_OptionTip>Click to cycle: any, include (+), exclude (−). The number is how many settleable sites have this.</RimEmbark_OptionTip>
+  <RimEmbark_IncludeTip>Include (+): only show sites that have this.</RimEmbark_IncludeTip>
+  <RimEmbark_ExcludeTip>Exclude (−): hide sites that have this.</RimEmbark_ExcludeTip>
+
+  <RimEmbark_Ranges>Climate and geography</RimEmbark_Ranges>
+  <RimEmbark_AvgTemp>Average temperature</RimEmbark_AvgTemp>
+  <RimEmbark_MinTemp>Coldest temperature</RimEmbark_MinTemp>
+  <RimEmbark_MaxTemp>Hottest temperature</RimEmbark_MaxTemp>
+  <RimEmbark_GrowingPeriod>Growing period</RimEmbark_GrowingPeriod>
+  <RimEmbark_Rainfall>Rainfall</RimEmbark_Rainfall>
+  <RimEmbark_Elevation>Elevation</RimEmbark_Elevation>
+  <RimEmbark_AnimalDensity>Animal density</RimEmbark_AnimalDensity>
+  <RimEmbark_MovementDifficulty>Movement difficulty</RimEmbark_MovementDifficulty>
+  <RimEmbark_Pollution>Pollution</RimEmbark_Pollution>
+  <RimEmbark_SettlementDistance>Distance to nearest faction base</RimEmbark_SettlementDistance>
+  <RimEmbark_ValueDays>{0} days</RimEmbark_ValueDays>
+  <RimEmbark_ValueMm>{0} mm</RimEmbark_ValueMm>
+  <RimEmbark_ValueMeters>{0} m</RimEmbark_ValueMeters>
+  <RimEmbark_ValueTiles>{0} tiles</RimEmbark_ValueTiles>
+
+  <RimEmbark_Biome>Biome</RimEmbark_Biome>
+  <RimEmbark_Terrain>Terrain</RimEmbark_Terrain>
+  <RimEmbark_Stone>Stone types</RimEmbark_Stone>
+  <RimEmbark_River>River</RimEmbark_River>
+  <RimEmbark_Road>Road</RimEmbark_Road>
+  <RimEmbark_Feature>Map features</RimEmbark_Feature>
+  <RimEmbark_Landmark>Landmark</RimEmbark_Landmark>
+  <RimEmbark_Other>Other</RimEmbark_Other>
+  <RimEmbark_Coastal>Coastal</RimEmbark_Coastal>
+  <RimEmbark_AnyRiver>Any river</RimEmbark_AnyRiver>
+  <RimEmbark_AnyRoad>Any road</RimEmbark_AnyRoad>
+  <RimEmbark_AnyLandmark>Any landmark</RimEmbark_AnyLandmark>
+  <RimEmbark_ExtremeBiome>Extreme biome</RimEmbark_ExtremeBiome>
+</LanguageData>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RimEmbark_Title>着陆筛选</RimEmbark_Title>
+  <RimEmbark_OpenFilters>着陆筛选</RimEmbark_OpenFilters>
+  <RimEmbark_Analyzing>正在分析世界... {0}</RimEmbark_Analyzing>
+  <RimEmbark_Searching>搜索中...</RimEmbark_Searching>
+  <RimEmbark_NoFilters>未设置筛选。可定居地点：{0} 个。</RimEmbark_NoFilters>
+  <RimEmbark_Matches>{1} 个地点中有 {0} 个符合</RimEmbark_Matches>
+  <RimEmbark_RandomMatch>随机符合</RimEmbark_RandomMatch>
+  <RimEmbark_RandomMatchTip>随机选择一个符合条件的地点，并将镜头移至该处。</RimEmbark_RandomMatchTip>
+  <RimEmbark_Reset>重置</RimEmbark_Reset>
+  <RimEmbark_Overlay>高亮</RimEmbark_Overlay>
+  <RimEmbark_Search>搜索筛选项...</RimEmbark_Search>
+  <RimEmbark_ClearCategory>清除此类别</RimEmbark_ClearCategory>
+  <RimEmbark_MatchAll>全部</RimEmbark_MatchAll>
+  <RimEmbark_MatchAny>任一</RimEmbark_MatchAny>
+  <RimEmbark_MatchModeTip>全部：地点必须具备所有包含的选项。\n任一：地点至少具备一个包含的选项。\n\n排除的选项始终不允许。</RimEmbark_MatchModeTip>
+  <RimEmbark_ActiveCount>{0} 项启用</RimEmbark_ActiveCount>
+  <RimEmbark_CategorySummary>+{0} −{1}</RimEmbark_CategorySummary>
+  <RimEmbark_IncludedOption>+ {0}</RimEmbark_IncludedOption>
+  <RimEmbark_ExcludedOption>− {0}</RimEmbark_ExcludedOption>
+  <RimEmbark_OptionTip>点击切换：任意、包含 (+)、排除 (−)。数字表示具备此项的可定居地点数量。</RimEmbark_OptionTip>
+  <RimEmbark_IncludeTip>包含 (+)：只显示具备此项的地点。</RimEmbark_IncludeTip>
+  <RimEmbark_ExcludeTip>排除 (−)：隐藏具备此项的地点。</RimEmbark_ExcludeTip>
+  <RimEmbark_Ranges>气候与地理</RimEmbark_Ranges>
+  <RimEmbark_AvgTemp>平均温度</RimEmbark_AvgTemp>
+  <RimEmbark_MinTemp>最低温度</RimEmbark_MinTemp>
+  <RimEmbark_MaxTemp>最高温度</RimEmbark_MaxTemp>
+  <RimEmbark_GrowingPeriod>生长期</RimEmbark_GrowingPeriod>
+  <RimEmbark_Rainfall>降雨量</RimEmbark_Rainfall>
+  <RimEmbark_Elevation>海拔</RimEmbark_Elevation>
+  <RimEmbark_AnimalDensity>动物密度</RimEmbark_AnimalDensity>
+  <RimEmbark_MovementDifficulty>移动难度</RimEmbark_MovementDifficulty>
+  <RimEmbark_Pollution>污染</RimEmbark_Pollution>
+  <RimEmbark_SettlementDistance>距最近派系基地的距离</RimEmbark_SettlementDistance>
+  <RimEmbark_ValueDays>{0} 天</RimEmbark_ValueDays>
+  <RimEmbark_ValueMm>{0} 毫米</RimEmbark_ValueMm>
+  <RimEmbark_ValueMeters>{0} 米</RimEmbark_ValueMeters>
+  <RimEmbark_ValueTiles>{0} 格</RimEmbark_ValueTiles>
+  <RimEmbark_Biome>生物群系</RimEmbark_Biome>
+  <RimEmbark_Terrain>地形</RimEmbark_Terrain>
+  <RimEmbark_Stone>石材类型</RimEmbark_Stone>
+  <RimEmbark_River>河流</RimEmbark_River>
+  <RimEmbark_Road>道路</RimEmbark_Road>
+  <RimEmbark_Feature>地图特征</RimEmbark_Feature>
+  <RimEmbark_Landmark>地标</RimEmbark_Landmark>
+  <RimEmbark_Other>其他</RimEmbark_Other>
+  <RimEmbark_Coastal>沿海</RimEmbark_Coastal>
+  <RimEmbark_AnyRiver>任意河流</RimEmbark_AnyRiver>
+  <RimEmbark_AnyRoad>任意道路</RimEmbark_AnyRoad>
+  <RimEmbark_AnyLandmark>任意地标</RimEmbark_AnyLandmark>
+  <RimEmbark_ExtremeBiome>极端生物群系</RimEmbark_ExtremeBiome>
+</LanguageData>

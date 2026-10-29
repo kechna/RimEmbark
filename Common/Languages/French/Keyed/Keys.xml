@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RimEmbark_Title>Filtres d'atterrissage</RimEmbark_Title>
+  <RimEmbark_OpenFilters>Filtres d'atterrissage</RimEmbark_OpenFilters>
+  <RimEmbark_Analyzing>Analyse du monde... {0}</RimEmbark_Analyzing>
+  <RimEmbark_Searching>Recherche...</RimEmbark_Searching>
+  <RimEmbark_NoFilters>Aucun filtre. {0} sites peuvent être colonisés.</RimEmbark_NoFilters>
+  <RimEmbark_Matches>{0} sites sur {1} correspondent</RimEmbark_Matches>
+  <RimEmbark_RandomMatch>Au hasard</RimEmbark_RandomMatch>
+  <RimEmbark_RandomMatchTip>Sélectionne un site correspondant au hasard et y déplace la caméra.</RimEmbark_RandomMatchTip>
+  <RimEmbark_Reset>Réinitialiser</RimEmbark_Reset>
+  <RimEmbark_Overlay>Surligner</RimEmbark_Overlay>
+  <RimEmbark_Search>Rechercher un filtre...</RimEmbark_Search>
+  <RimEmbark_ClearCategory>Vider cette catégorie</RimEmbark_ClearCategory>
+  <RimEmbark_MatchAll>Tous</RimEmbark_MatchAll>
+  <RimEmbark_MatchAny>Au moins un</RimEmbark_MatchAny>
+  <RimEmbark_MatchModeTip>Tous : un site doit avoir toutes les options incluses.\nAu moins un : un site doit avoir au moins une option incluse.\n\nLes options exclues ne sont jamais autorisées.</RimEmbark_MatchModeTip>
+  <RimEmbark_ActiveCount>{0} actif(s)</RimEmbark_ActiveCount>
+  <RimEmbark_CategorySummary>+{0} −{1}</RimEmbark_CategorySummary>
+  <RimEmbark_IncludedOption>+ {0}</RimEmbark_IncludedOption>
+  <RimEmbark_ExcludedOption>− {0}</RimEmbark_ExcludedOption>
+  <RimEmbark_OptionTip>Cliquer pour alterner : indifférent, inclure (+), exclure (−). Le nombre indique combien de sites colonisables ont cette option.</RimEmbark_OptionTip>
+  <RimEmbark_IncludeTip>Inclure (+) : n'afficher que les sites qui l'ont.</RimEmbark_IncludeTip>
+  <RimEmbark_ExcludeTip>Exclure (−) : masquer les sites qui l'ont.</RimEmbark_ExcludeTip>
+  <RimEmbark_Ranges>Climat et géographie</RimEmbark_Ranges>
+  <RimEmbark_AvgTemp>Température moyenne</RimEmbark_AvgTemp>
+  <RimEmbark_MinTemp>Température la plus froide</RimEmbark_MinTemp>
+  <RimEmbark_MaxTemp>Température la plus chaude</RimEmbark_MaxTemp>
+  <RimEmbark_GrowingPeriod>Période de croissance</RimEmbark_GrowingPeriod>
+  <RimEmbark_Rainfall>Précipitations</RimEmbark_Rainfall>
+  <RimEmbark_Elevation>Altitude</RimEmbark_Elevation>
+  <RimEmbark_AnimalDensity>Densité animale</RimEmbark_AnimalDensity>
+  <RimEmbark_MovementDifficulty>Difficulté de déplacement</RimEmbark_MovementDifficulty>
+  <RimEmbark_Pollution>Pollution</RimEmbark_Pollution>
+  <RimEmbark_SettlementDistance>Distance à la base de faction la plus proche</RimEmbark_SettlementDistance>
+  <RimEmbark_ValueDays>{0} jours</RimEmbark_ValueDays>
+  <RimEmbark_ValueMm>{0} mm</RimEmbark_ValueMm>
+  <RimEmbark_ValueMeters>{0} m</RimEmbark_ValueMeters>
+  <RimEmbark_ValueTiles>{0} cases</RimEmbark_ValueTiles>
+  <RimEmbark_Biome>Biome</RimEmbark_Biome>
+  <RimEmbark_Terrain>Relief</RimEmbark_Terrain>
+  <RimEmbark_Stone>Types de roche</RimEmbark_Stone>
+  <RimEmbark_River>Rivière</RimEmbark_River>
+  <RimEmbark_Road>Route</RimEmbark_Road>
+  <RimEmbark_Feature>Particularités de la carte</RimEmbark_Feature>
+  <RimEmbark_Landmark>Site remarquable</RimEmbark_Landmark>
+  <RimEmbark_Other>Autre</RimEmbark_Other>
+  <RimEmbark_Coastal>Côtier</RimEmbark_Coastal>
+  <RimEmbark_AnyRiver>N'importe quelle rivière</RimEmbark_AnyRiver>
+  <RimEmbark_AnyRoad>N'importe quelle route</RimEmbark_AnyRoad>
+  <RimEmbark_AnyLandmark>N'importe quel site remarquable</RimEmbark_AnyLandmark>
+  <RimEmbark_ExtremeBiome>Biome extrême</RimEmbark_ExtremeBiome>
+</LanguageData>
