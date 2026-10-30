@@ -20,6 +20,9 @@ namespace RimEmbark
         // Kept across reopening the window.
         private static readonly HashSet<string> Expanded = new HashSet<string> { "Ranges" };
 
+        private static readonly bool MapPreviewActive = ModsConfig.IsActive("m00nl1ght.MapPreview");
+        private readonly HashSet<Window> movedMapPreviewWindows = new HashSet<Window>();
+
         private Vector2 scrollPosition;
         private float viewHeight;
         private float visibleTop;
@@ -51,6 +54,36 @@ namespace RimEmbark
         {
             Vector2 size = InitialSize;
             windowRect = new Rect(UI.screenWidth - size.x - 10f, 50f, size.x, size.y).Rounded();
+        }
+
+        public override void WindowUpdate()
+        {
+            base.WindowUpdate();
+            if (MapPreviewActive)
+            {
+                MoveMapPreviewWindows();
+            }
+        }
+
+        // Map Preview opens its preview and toolbar in the top right, on top of this window. Each one that overlaps is
+        // moved once to the left of it, so dragging it back later is respected.
+        private void MoveMapPreviewWindows()
+        {
+            WindowStack stack = Find.WindowStack;
+            for (int i = 0; i < stack.Count; i++)
+            {
+                Window window = stack[i];
+                string type = window.GetType().FullName;
+                if (type != "MapPreview.MapPreviewWindow" && type != "MapPreview.MapPreviewToolbar")
+                {
+                    continue;
+                }
+                if (!movedMapPreviewWindows.Add(window) || !window.windowRect.Overlaps(windowRect))
+                {
+                    continue;
+                }
+                window.windowRect.x = Mathf.Max(0f, windowRect.x - window.windowRect.width - 10f);
+            }
         }
 
         public override void PostClose()
