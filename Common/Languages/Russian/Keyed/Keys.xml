@@ -7,7 +7,7 @@
   <RimEmbark_NoFilters>Фильтры не заданы. Доступно для поселения: {0}.</RimEmbark_NoFilters>
   <RimEmbark_Matches>Подходит: {0} из {1}</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Случайная</RimEmbark_RandomMatch>
-  <RimEmbark_RandomMatchTip>Выбрать случайное подходящее место и перевести к нему камеру.</RimEmbark_RandomMatchTip>
+  <RimEmbark_RandomMatchTip>Выбрать случайное подходящее место и перевести к нему камеру. Уже просмотренные места пропускаются, пока вы не увидите все совпадения.</RimEmbark_RandomMatchTip>
   <RimEmbark_Reset>Сбросить</RimEmbark_Reset>
   <RimEmbark_Overlay>Подсветка</RimEmbark_Overlay>
   <RimEmbark_Search>Поиск фильтров...</RimEmbark_Search>

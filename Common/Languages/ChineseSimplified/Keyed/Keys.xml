@@ -7,7 +7,7 @@
   <RimEmbark_NoFilters>未设置筛选。可定居地点：{0} 个。</RimEmbark_NoFilters>
   <RimEmbark_Matches>{1} 个地点中有 {0} 个符合</RimEmbark_Matches>
   <RimEmbark_RandomMatch>随机符合</RimEmbark_RandomMatch>
-  <RimEmbark_RandomMatchTip>随机选择一个符合条件的地点，并将镜头移至该处。</RimEmbark_RandomMatchTip>
+  <RimEmbark_RandomMatchTip>随机选择一个符合条件的地点，并将镜头移至该处。已查看过的地点会被跳过，直到所有符合条件的地点都看过为止。</RimEmbark_RandomMatchTip>
   <RimEmbark_Reset>重置</RimEmbark_Reset>
   <RimEmbark_Overlay>高亮</RimEmbark_Overlay>
   <RimEmbark_Search>搜索筛选项...</RimEmbark_Search>

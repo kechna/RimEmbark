@@ -7,7 +7,7 @@
   <RimEmbark_NoFilters>Nenhum filtro definido. {0} locais podem ser colonizados.</RimEmbark_NoFilters>
   <RimEmbark_Matches>{0} de {1} locais correspondem</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Aleatório</RimEmbark_RandomMatch>
-  <RimEmbark_RandomMatchTip>Seleciona um local correspondente aleatório e move a câmera até ele.</RimEmbark_RandomMatchTip>
+  <RimEmbark_RandomMatchTip>Seleciona um local correspondente aleatório e move a câmera até ele. Locais que você já viu são ignorados até que você tenha visto todos os resultados.</RimEmbark_RandomMatchTip>
   <RimEmbark_Reset>Redefinir</RimEmbark_Reset>
   <RimEmbark_Overlay>Destacar</RimEmbark_Overlay>
   <RimEmbark_Search>Buscar filtros...</RimEmbark_Search>

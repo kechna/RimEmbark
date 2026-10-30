@@ -7,7 +7,7 @@
   <RimEmbark_NoFilters>Brak filtrów. Można osiedlić się w {0} miejscach.</RimEmbark_NoFilters>
   <RimEmbark_Matches>Pasuje {0} z {1} miejsc</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Losowe</RimEmbark_RandomMatch>
-  <RimEmbark_RandomMatchTip>Wybierz losowe pasujące miejsce i przenieś do niego kamerę.</RimEmbark_RandomMatchTip>
+  <RimEmbark_RandomMatchTip>Wybierz losowe pasujące miejsce i przenieś do niego kamerę. Miejsca, które już oglądałeś, są pomijane, dopóki nie zobaczysz wszystkich dopasowań.</RimEmbark_RandomMatchTip>
   <RimEmbark_Reset>Resetuj</RimEmbark_Reset>
   <RimEmbark_Overlay>Podświetl</RimEmbark_Overlay>
   <RimEmbark_Search>Szukaj filtrów...</RimEmbark_Search>

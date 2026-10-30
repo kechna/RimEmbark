@@ -16,6 +16,9 @@ namespace RimEmbark
 
         public static bool PageOpen;
 
+        // Tiles selected on this page, by hand or by JumpToRandomMatch, which it skips until every match was seen.
+        private static readonly HashSet<int> Visited = new HashSet<int>();
+
         // Dragging a slider changes the filter every frame; recomputing and rebuilding the overlay mesh that often
         // stutters on large worlds.
         private const float RecomputeInterval = 0.15f;
@@ -47,6 +50,7 @@ namespace RimEmbark
                 return;
             }
             Cache = new TileCache(world, surface);
+            Visited.Clear();
             Matches.Clear();
             ResultVersion++;
             computedFilterVersion = -1;
@@ -56,6 +60,7 @@ namespace RimEmbark
         {
             PageOpen = false;
             Cache = null;
+            Visited.Clear();
             Matches.Clear();
             ResultVersion++;
             RimEmbarkMod.Instance.WriteSettings();
@@ -69,6 +74,11 @@ namespace RimEmbark
             }
             lastUpdateFrame = Time.frameCount;
             EnsureCacheForCurrentWorld();
+            PlanetTile selected = Find.WorldSelector.SelectedTile;
+            if (selected.Valid && selected.Layer == Cache.layer)
+            {
+                Visited.Add(selected.tileId);
+            }
             if (!Cache.Done)
             {
                 Cache.Step();
@@ -87,9 +97,45 @@ namespace RimEmbark
             {
                 return;
             }
-            PlanetTile tile = Cache.layer.PlanetTileForID(Matches.RandomElement());
+            int unvisited = CountUnvisited();
+            if (unvisited == 0)
+            {
+                // Every match was seen; start over, but not on the tile that's selected now.
+                Visited.Clear();
+                PlanetTile current = Find.WorldSelector.SelectedTile;
+                if (current.Valid && current.Layer == Cache.layer && Matches.Count > 1)
+                {
+                    Visited.Add(current.tileId);
+                }
+                unvisited = CountUnvisited();
+            }
+            int pick = Rand.Range(0, unvisited);
+            int tileId = -1;
+            foreach (int id in Matches)
+            {
+                if (!Visited.Contains(id) && pick-- == 0)
+                {
+                    tileId = id;
+                    break;
+                }
+            }
+            Visited.Add(tileId);
+            PlanetTile tile = Cache.layer.PlanetTileForID(tileId);
             Find.WorldInterface.SelectedTile = tile;
             Find.WorldCameraDriver.JumpTo(tile);
+        }
+
+        private static int CountUnvisited()
+        {
+            int count = 0;
+            foreach (int id in Matches)
+            {
+                if (!Visited.Contains(id))
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
         private static void Recompute()

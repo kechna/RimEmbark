@@ -7,7 +7,7 @@
   <RimEmbark_NoFilters>Keine Filter gesetzt. {0} Orte sind besiedelbar.</RimEmbark_NoFilters>
   <RimEmbark_Matches>{0} von {1} Orten passen</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Zufälliger Treffer</RimEmbark_RandomMatch>
-  <RimEmbark_RandomMatchTip>Einen zufälligen passenden Ort auswählen und die Kamera dorthin bewegen.</RimEmbark_RandomMatchTip>
+  <RimEmbark_RandomMatchTip>Einen zufälligen passenden Ort auswählen und die Kamera dorthin bewegen. Bereits angesehene Orte werden übersprungen, bis du alle Treffer gesehen hast.</RimEmbark_RandomMatchTip>
   <RimEmbark_Reset>Zurücksetzen</RimEmbark_Reset>
   <RimEmbark_Overlay>Hervorheben</RimEmbark_Overlay>
   <RimEmbark_Search>Filter durchsuchen...</RimEmbark_Search>

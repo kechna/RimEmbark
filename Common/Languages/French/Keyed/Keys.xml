@@ -7,7 +7,7 @@
   <RimEmbark_NoFilters>Aucun filtre. {0} sites peuvent être colonisés.</RimEmbark_NoFilters>
   <RimEmbark_Matches>{0} sites sur {1} correspondent</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Au hasard</RimEmbark_RandomMatch>
-  <RimEmbark_RandomMatchTip>Sélectionne un site correspondant au hasard et y déplace la caméra.</RimEmbark_RandomMatchTip>
+  <RimEmbark_RandomMatchTip>Sélectionne un site correspondant au hasard et y déplace la caméra. Les sites déjà consultés sont ignorés jusqu'à ce que vous ayez vu toutes les correspondances.</RimEmbark_RandomMatchTip>
   <RimEmbark_Reset>Réinitialiser</RimEmbark_Reset>
   <RimEmbark_Overlay>Surligner</RimEmbark_Overlay>
   <RimEmbark_Search>Rechercher un filtre...</RimEmbark_Search>

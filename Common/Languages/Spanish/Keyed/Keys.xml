@@ -7,7 +7,7 @@
   <RimEmbark_NoFilters>Sin filtros. Se puede asentar en {0} lugares.</RimEmbark_NoFilters>
   <RimEmbark_Matches>{0} de {1} lugares coinciden</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Al azar</RimEmbark_RandomMatch>
-  <RimEmbark_RandomMatchTip>Selecciona un lugar coincidente al azar y mueve la cámara hasta él.</RimEmbark_RandomMatchTip>
+  <RimEmbark_RandomMatchTip>Selecciona un lugar coincidente al azar y mueve la cámara hasta él. Los lugares que ya has visto se omiten hasta que hayas visto todas las coincidencias.</RimEmbark_RandomMatchTip>
   <RimEmbark_Reset>Restablecer</RimEmbark_Reset>
   <RimEmbark_Overlay>Resaltar</RimEmbark_Overlay>
   <RimEmbark_Search>Buscar filtros...</RimEmbark_Search>
