@@ -35,6 +35,11 @@ namespace RimEmbark
         private readonly List<int> current = new List<int>();
         private List<int[]> building = new List<int[]>();
 
+        public List<string> FilterKeys(string key)
+        {
+            return indexByKey.TryGetValue(key, out int index) ? filterKeys[index] : null;
+        }
+
         public void BeginTile()
         {
             current.Clear();

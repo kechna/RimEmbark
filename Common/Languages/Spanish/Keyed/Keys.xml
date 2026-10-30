@@ -22,6 +22,7 @@
   <RimEmbark_OptionTip>Haz clic para alternar: cualquiera, incluir (+), excluir (−). El número indica cuántos lugares habitables lo tienen.</RimEmbark_OptionTip>
   <RimEmbark_IncludeTip>Incluir (+): mostrar solo los lugares que lo tienen.</RimEmbark_IncludeTip>
   <RimEmbark_ExcludeTip>Excluir (−): ocultar los lugares que lo tienen.</RimEmbark_ExcludeTip>
+  <RimEmbark_TileInfoClickTip>Clic izquierdo: incluir (+). Clic derecho: excluir (−). Haz clic de nuevo para quitarlo.</RimEmbark_TileInfoClickTip>
   <RimEmbark_Ranges>Clima y geografía</RimEmbark_Ranges>
   <RimEmbark_AvgTemp>Temperatura media</RimEmbark_AvgTemp>
   <RimEmbark_MinTemp>Temperatura más fría</RimEmbark_MinTemp>

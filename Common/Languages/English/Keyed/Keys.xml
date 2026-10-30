@@ -22,6 +22,7 @@
   <RimEmbark_OptionTip>Click to cycle: any, include (+), exclude (−). The number is how many settleable sites have this.</RimEmbark_OptionTip>
   <RimEmbark_IncludeTip>Include (+): only show sites that have this.</RimEmbark_IncludeTip>
   <RimEmbark_ExcludeTip>Exclude (−): hide sites that have this.</RimEmbark_ExcludeTip>
+  <RimEmbark_TileInfoClickTip>Left click: include (+). Right click: exclude (−). Click again to clear.</RimEmbark_TileInfoClickTip>
 
   <RimEmbark_Ranges>Climate and geography</RimEmbark_Ranges>
   <RimEmbark_AvgTemp>Average temperature</RimEmbark_AvgTemp>

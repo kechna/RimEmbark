@@ -22,6 +22,7 @@
   <RimEmbark_OptionTip>Cliquer pour alterner : indifférent, inclure (+), exclure (−). Le nombre indique combien de sites colonisables ont cette option.</RimEmbark_OptionTip>
   <RimEmbark_IncludeTip>Inclure (+) : n'afficher que les sites qui l'ont.</RimEmbark_IncludeTip>
   <RimEmbark_ExcludeTip>Exclure (−) : masquer les sites qui l'ont.</RimEmbark_ExcludeTip>
+  <RimEmbark_TileInfoClickTip>Clic gauche : inclure (+). Clic droit : exclure (−). Cliquer à nouveau pour effacer.</RimEmbark_TileInfoClickTip>
   <RimEmbark_Ranges>Climat et géographie</RimEmbark_Ranges>
   <RimEmbark_AvgTemp>Température moyenne</RimEmbark_AvgTemp>
   <RimEmbark_MinTemp>Température la plus froide</RimEmbark_MinTemp>

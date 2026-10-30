@@ -14,8 +14,10 @@ namespace RimEmbark
         private const float ButtonSize = 24f;
         private const float Gap = 4f;
 
-        private static readonly Color IncludeColor = new Color(0.2f, 0.8f, 0.3f, 0.25f);
-        private static readonly Color ExcludeColor = new Color(0.9f, 0.2f, 0.2f, 0.25f);
+        public static readonly Color IncludeColor = new Color(0.2f, 0.8f, 0.3f, 0.25f);
+        public static readonly Color ExcludeColor = new Color(0.9f, 0.2f, 0.2f, 0.25f);
+        public static readonly Color IncludeTextColor = new Color(0.45f, 0.9f, 0.5f);
+        public static readonly Color ExcludeTextColor = new Color(1f, 0.45f, 0.4f);
 
         // Kept across reopening the window.
         private static readonly HashSet<string> Expanded = new HashSet<string> { "Ranges" };

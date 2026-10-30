@@ -191,7 +191,8 @@ namespace RimEmbark
                 {
                     foreach (TileMutatorDef mutator in t.tile.Mutators)
                     {
-                        AddMutator(t, c, mutator);
+                        MutatorOption(t.id, mutator, out string key, out string label, out string description);
+                        c.Add(key, label.CapitalizeFirst(), description);
                     }
                 },
             },
@@ -254,28 +255,27 @@ namespace RimEmbark
 
         // Some mutators label themselves per tile ("Mineral rich (gold)", animal habitats, groves, stockpiles), as
         // the terrain tab shows them; each variant becomes its own option.
-        private static void AddMutator(TileInfo t, IOptionCollector c, TileMutatorDef mutator)
+        public static void MutatorOption(PlanetTile tile, TileMutatorDef mutator, out string key, out string label, out string description)
         {
-            string label;
-            string description;
             try
             {
-                label = mutator.Label(t.id);
-                description = mutator.Description(t.id);
+                label = mutator.Label(tile);
+                description = mutator.Description(tile);
             }
             catch (Exception e)
             {
-                Log.WarningOnce($"[Rim Embark] Could not get the label of {mutator.defName} on tile {t.id}: {e.Message}", mutator.shortHash);
+                Log.WarningOnce($"[Rim Embark] Could not get the label of {mutator.defName} on tile {tile}: {e.Message}", mutator.shortHash);
                 label = mutator.label;
                 description = mutator.description;
             }
             if (label.NullOrEmpty())
             {
-                c.Add(mutator);
+                key = mutator.defName;
+                label = mutator.defName;
+                description = mutator.description;
                 return;
             }
-            string key = label == mutator.label ? mutator.defName : mutator.defName + ":" + label;
-            c.Add(key, label.CapitalizeFirst(), description);
+            key = label == mutator.label ? mutator.defName : mutator.defName + ":" + label;
         }
     }
 }

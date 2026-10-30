@@ -22,6 +22,7 @@
   <RimEmbark_OptionTip>Kliknij, aby przełączyć: dowolne, uwzględnij (+), wyklucz (−). Liczba oznacza, ile miejsc nadających się do osiedlenia to ma.</RimEmbark_OptionTip>
   <RimEmbark_IncludeTip>Uwzględnij (+): pokazuj tylko miejsca, które to mają.</RimEmbark_IncludeTip>
   <RimEmbark_ExcludeTip>Wyklucz (−): ukryj miejsca, które to mają.</RimEmbark_ExcludeTip>
+  <RimEmbark_TileInfoClickTip>Lewy przycisk: uwzględnij (+). Prawy przycisk: wyklucz (−). Kliknij ponownie, aby wyczyścić.</RimEmbark_TileInfoClickTip>
   <RimEmbark_Ranges>Klimat i geografia</RimEmbark_Ranges>
   <RimEmbark_AvgTemp>Średnia temperatura</RimEmbark_AvgTemp>
   <RimEmbark_MinTemp>Najniższa temperatura</RimEmbark_MinTemp>

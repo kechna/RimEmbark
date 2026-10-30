@@ -22,6 +22,7 @@
   <RimEmbark_OptionTip>Нажмите для переключения: любое, включить (+), исключить (−). Число — сколько доступных для поселения мест имеют это.</RimEmbark_OptionTip>
   <RimEmbark_IncludeTip>Включить (+): показывать только места, где это есть.</RimEmbark_IncludeTip>
   <RimEmbark_ExcludeTip>Исключить (−): скрыть места, где это есть.</RimEmbark_ExcludeTip>
+  <RimEmbark_TileInfoClickTip>ЛКМ: включить (+). ПКМ: исключить (−). Нажмите ещё раз, чтобы сбросить.</RimEmbark_TileInfoClickTip>
   <RimEmbark_Ranges>Климат и география</RimEmbark_Ranges>
   <RimEmbark_AvgTemp>Средняя температура</RimEmbark_AvgTemp>
   <RimEmbark_MinTemp>Самая низкая температура</RimEmbark_MinTemp>

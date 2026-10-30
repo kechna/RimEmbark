@@ -22,6 +22,7 @@
   <RimEmbark_OptionTip>Clique para alternar: qualquer, incluir (+), excluir (−). O número indica quantos locais colonizáveis têm isso.</RimEmbark_OptionTip>
   <RimEmbark_IncludeTip>Incluir (+): mostrar apenas locais que têm isso.</RimEmbark_IncludeTip>
   <RimEmbark_ExcludeTip>Excluir (−): ocultar locais que têm isso.</RimEmbark_ExcludeTip>
+  <RimEmbark_TileInfoClickTip>Clique esquerdo: incluir (+). Clique direito: excluir (−). Clique novamente para limpar.</RimEmbark_TileInfoClickTip>
   <RimEmbark_Ranges>Clima e geografia</RimEmbark_Ranges>
   <RimEmbark_AvgTemp>Temperatura média</RimEmbark_AvgTemp>
   <RimEmbark_MinTemp>Temperatura mais fria</RimEmbark_MinTemp>

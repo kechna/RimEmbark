@@ -22,6 +22,7 @@
   <RimEmbark_OptionTip>Klicken zum Wechseln: egal, einschließen (+), ausschließen (−). Die Zahl gibt an, wie viele besiedelbare Orte dies haben.</RimEmbark_OptionTip>
   <RimEmbark_IncludeTip>Einschließen (+): nur Orte zeigen, die dies haben.</RimEmbark_IncludeTip>
   <RimEmbark_ExcludeTip>Ausschließen (−): Orte ausblenden, die dies haben.</RimEmbark_ExcludeTip>
+  <RimEmbark_TileInfoClickTip>Linksklick: einschließen (+). Rechtsklick: ausschließen (−). Erneut klicken zum Zurücksetzen.</RimEmbark_TileInfoClickTip>
   <RimEmbark_Ranges>Klima und Geografie</RimEmbark_Ranges>
   <RimEmbark_AvgTemp>Durchschnittstemperatur</RimEmbark_AvgTemp>
   <RimEmbark_MinTemp>Kälteste Temperatur</RimEmbark_MinTemp>

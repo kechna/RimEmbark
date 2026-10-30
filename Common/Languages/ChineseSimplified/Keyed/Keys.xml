@@ -22,6 +22,7 @@
   <RimEmbark_OptionTip>点击切换：任意、包含 (+)、排除 (−)。数字表示具备此项的可定居地点数量。</RimEmbark_OptionTip>
   <RimEmbark_IncludeTip>包含 (+)：只显示具备此项的地点。</RimEmbark_IncludeTip>
   <RimEmbark_ExcludeTip>排除 (−)：隐藏具备此项的地点。</RimEmbark_ExcludeTip>
+  <RimEmbark_TileInfoClickTip>左键：包含 (+)。右键：排除 (−)。再次点击以清除。</RimEmbark_TileInfoClickTip>
   <RimEmbark_Ranges>气候与地理</RimEmbark_Ranges>
   <RimEmbark_AvgTemp>平均温度</RimEmbark_AvgTemp>
   <RimEmbark_MinTemp>最低温度</RimEmbark_MinTemp>
