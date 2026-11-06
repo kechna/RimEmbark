@@ -250,7 +250,7 @@ namespace RimEmbark
                     y += lineHeight;
                 }
                 rects[i] = new Rect(x, y, labelWidth, lineHeight);
-                x += labelWidth + Text.CalcSize(separators[i]).x;
+                x += labelWidth + SeparatorWidth(separators[i]);
             }
 
             Rect rect = listing.GetRect(Mathf.Max(Text.CalcHeight(leftLabel, half), y + lineHeight));
@@ -261,10 +261,18 @@ namespace RimEmbark
                 DrawToken(labelRect, tokens[i], drawLabel: true);
                 if (separators[i].Length > 0)
                 {
-                    Widgets.Label(new Rect(labelRect.xMax, labelRect.y, Text.CalcSize(separators[i]).x + 2f, lineHeight), separators[i]);
+                    Widgets.Label(new Rect(labelRect.xMax, labelRect.y, SeparatorWidth(separators[i]) + 2f, lineHeight), separators[i]);
                 }
             }
             listing.Gap(listing.verticalSpacing);
+        }
+
+        // CalcSize ignores trailing whitespace, so count the spaces separately.
+        private static float SeparatorWidth(string separator)
+        {
+            float space = Text.CalcSize("a a").x - Text.CalcSize("aa").x;
+            int spaces = separator.Length - separator.Replace(" ", "").Length;
+            return Text.CalcSize(separator.Replace(" ", "")).x + spaces * space;
         }
 
         // The " and " of ToCommaList(useAnd: true) in the current language.
