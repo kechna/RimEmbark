@@ -8,6 +8,12 @@
   <RimEmbark_Matches>{0} of {1} sites match</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Random match</RimEmbark_RandomMatch>
   <RimEmbark_RandomMatchTip>Select a random matching site and move the camera to it. Sites you already looked at are skipped until you've seen every match.</RimEmbark_RandomMatchTip>
+  <RimEmbark_PreviousMatch>Previous matching site</RimEmbark_PreviousMatch>
+  <RimEmbark_NextMatch>Next matching site</RimEmbark_NextMatch>
+  <RimEmbark_Results>Matching sites: {0} / {1}</RimEmbark_Results>
+  <RimEmbark_ResultTile>Tile {0}: {1}</RimEmbark_ResultTile>
+  <RimEmbark_PinTile>Pin this site</RimEmbark_PinTile>
+  <RimEmbark_UnpinTile>Unpin this site</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Reset</RimEmbark_Reset>
   <RimEmbark_Overlay>Highlight</RimEmbark_Overlay>
   <RimEmbark_Search>Search filters...</RimEmbark_Search>

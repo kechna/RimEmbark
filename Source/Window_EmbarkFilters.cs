@@ -18,6 +18,9 @@ namespace RimEmbark
         public static readonly Color ExcludeColor = new Color(0.9f, 0.2f, 0.2f, 0.25f);
         public static readonly Color IncludeTextColor = new Color(0.45f, 0.9f, 0.5f);
         public static readonly Color ExcludeTextColor = new Color(1f, 0.45f, 0.4f);
+        private static readonly Color PinnedColor = new Color(0.9f, 0.65f, 0.15f, 0.2f);
+        private static readonly Color PinIconColor = new Color(1f, 0.8f, 0.3f);
+        private static readonly Texture2D PinIcon = ContentFinder<Texture2D>.Get("UI/RimEmbark/Pin");
 
         // Kept across reopening the window.
         private static readonly HashSet<string> Expanded = new HashSet<string> { "Ranges" };
@@ -26,10 +29,14 @@ namespace RimEmbark
         private readonly HashSet<Window> movedMapPreviewWindows = new HashSet<Window>();
 
         private Vector2 scrollPosition;
+        private Vector2 resultsScrollPosition;
         private float viewHeight;
         private float visibleTop;
         private float visibleBottom;
         private string search = "";
+        private bool resultsExpanded;
+        private int lastSelectedTile = -1;
+        private int lastResultVersion = -1;
 
         public override Vector2 InitialSize => new Vector2(400f, Mathf.Min(UI.screenHeight - 220f, 780f));
 
@@ -127,6 +134,35 @@ namespace RimEmbark
             }
             y += 30f + Gap;
 
+            bool canBrowse = EmbarkSearch.HasResults && Filter.AnyActive && EmbarkSearch.Matches.Count > 0;
+            int selectedIndex = canBrowse ? EmbarkSearch.SelectedMatchIndex : -1;
+            Rect previousRect = new Rect(inRect.x, y, 32f, 30f);
+            if (Widgets.ButtonText(previousRect, "<", active: canBrowse && selectedIndex != 0))
+            {
+                int index = selectedIndex < 0 ? EmbarkSearch.Matches.Count - 1 : selectedIndex - 1;
+                EmbarkSearch.JumpToMatch(EmbarkSearch.OrderedMatches[index]);
+            }
+            TooltipHandler.TipRegion(previousRect, "RimEmbark_PreviousMatch".Translate());
+            Rect nextRect = new Rect(inRect.xMax - 32f, y, 32f, 30f);
+            if (Widgets.ButtonText(nextRect, ">", active: canBrowse && selectedIndex != EmbarkSearch.Matches.Count - 1))
+            {
+                EmbarkSearch.JumpToMatch(EmbarkSearch.OrderedMatches[selectedIndex + 1]);
+            }
+            TooltipHandler.TipRegion(nextRect, "RimEmbark_NextMatch".Translate());
+            Rect resultsRect = new Rect(previousRect.xMax + Gap, y, nextRect.xMin - previousRect.xMax - 2 * Gap, 30f);
+            string position = selectedIndex < 0 ? "-" : (selectedIndex + 1).ToStringCached();
+            if (Widgets.ButtonText(resultsRect, "RimEmbark_Results".Translate(position, canBrowse ? EmbarkSearch.Matches.Count.ToStringCached() : "0")))
+            {
+                resultsExpanded = !resultsExpanded;
+            }
+            GUI.DrawTexture(new Rect(resultsRect.x + 5f, resultsRect.y + 6f, 18f, 18f), resultsExpanded ? TexButton.Collapse : TexButton.Reveal);
+            y += 30f + Gap;
+
+            if (resultsExpanded && canBrowse)
+            {
+                DrawResults(inRect.x, ref y, inRect.width, Mathf.Min(168f, Mathf.Max(0f, inRect.yMax - y - 100f)));
+            }
+
             search = Widgets.TextField(new Rect(inRect.x, y, inRect.width, RowHeight), search);
             if (search.NullOrEmpty())
             {
@@ -153,6 +189,74 @@ namespace RimEmbark
             }
             viewHeight = curY;
             Widgets.EndScrollView();
+        }
+
+        private void DrawResults(float x, ref float y, float width, float height)
+        {
+            int selectedIndex = EmbarkSearch.SelectedMatchIndex;
+            int selectedTile = selectedIndex < 0 ? -1 : EmbarkSearch.OrderedMatches[selectedIndex];
+            if (selectedTile != lastSelectedTile || lastResultVersion != EmbarkSearch.ResultVersion)
+            {
+                if (selectedIndex >= 0)
+                {
+                    float top = selectedIndex * RowHeight;
+                    if (top < resultsScrollPosition.y)
+                    {
+                        resultsScrollPosition.y = top;
+                    }
+                    else if (top + RowHeight > resultsScrollPosition.y + height)
+                    {
+                        resultsScrollPosition.y = top + RowHeight - height;
+                    }
+                }
+                lastSelectedTile = selectedTile;
+                lastResultVersion = EmbarkSearch.ResultVersion;
+            }
+            float contentHeight = EmbarkSearch.Matches.Count * RowHeight;
+            resultsScrollPosition.y = Mathf.Clamp(resultsScrollPosition.y, 0f, Mathf.Max(0f, contentHeight - height));
+            Rect outRect = new Rect(x, y, width, height);
+            Rect viewRect = new Rect(0f, 0f, width - 16f, Mathf.Max(height, contentHeight));
+            Widgets.BeginScrollView(outRect, ref resultsScrollPosition, viewRect);
+            int first = Mathf.Max(0, Mathf.FloorToInt(resultsScrollPosition.y / RowHeight));
+            int last = Mathf.Min(EmbarkSearch.Matches.Count, Mathf.CeilToInt((resultsScrollPosition.y + height) / RowHeight));
+            int pinClicked = -1;
+            for (int i = first; i < last; i++)
+            {
+                int tileId = EmbarkSearch.OrderedMatches[i];
+                Rect row = new Rect(0f, i * RowHeight, viewRect.width, RowHeight);
+                bool pinned = EmbarkSearch.IsPinned(tileId);
+                if (pinned)
+                {
+                    Widgets.DrawBoxSolid(row, PinnedColor);
+                }
+                if (i == selectedIndex)
+                {
+                    Widgets.DrawHighlightSelected(row);
+                }
+                var tile = EmbarkSearch.Cache.layer[tileId];
+                string label = "RimEmbark_ResultTile".Translate(tileId.ToStringCached(), tile.PrimaryBiome.LabelCap);
+                Rect pinRect = new Rect(row.x, row.y, ButtonSize, ButtonSize);
+                if (Widgets.ButtonImage(pinRect.ContractedBy(3f), PinIcon, pinned ? PinIconColor : Color.gray))
+                {
+                    pinClicked = tileId;
+                }
+                TooltipHandler.TipRegion(pinRect, pinned ? "RimEmbark_UnpinTile".Translate() : "RimEmbark_PinTile".Translate());
+                Rect labelRect = new Rect(pinRect.xMax + Gap, row.y, row.width - ButtonSize - Gap, RowHeight);
+                if (Widgets.ButtonText(labelRect, label, drawBackground: false))
+                {
+                    EmbarkSearch.JumpToMatch(tileId);
+                }
+            }
+            Widgets.EndScrollView();
+            if (pinClicked >= 0)
+            {
+                EmbarkSearch.TogglePin(pinClicked);
+                if (EmbarkSearch.IsPinned(pinClicked))
+                {
+                    resultsScrollPosition.y = 0f;
+                }
+            }
+            y += height + Gap;
         }
 
         private static string StatusText(TileCache cache)

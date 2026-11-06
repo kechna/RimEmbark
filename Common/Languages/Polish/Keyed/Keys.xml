@@ -8,6 +8,12 @@
   <RimEmbark_Matches>Pasuje {0} z {1} miejsc</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Losowe</RimEmbark_RandomMatch>
   <RimEmbark_RandomMatchTip>Wybierz losowe pasujące miejsce i przenieś do niego kamerę. Miejsca, które już oglądałeś, są pomijane, dopóki nie zobaczysz wszystkich dopasowań.</RimEmbark_RandomMatchTip>
+  <RimEmbark_PreviousMatch>Poprzednie pasujące miejsce</RimEmbark_PreviousMatch>
+  <RimEmbark_NextMatch>Następne pasujące miejsce</RimEmbark_NextMatch>
+  <RimEmbark_Results>Pasujące miejsca: {0} / {1}</RimEmbark_Results>
+  <RimEmbark_ResultTile>Pole {0}: {1}</RimEmbark_ResultTile>
+  <RimEmbark_PinTile>Przypnij to miejsce</RimEmbark_PinTile>
+  <RimEmbark_UnpinTile>Odepnij to miejsce</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Resetuj</RimEmbark_Reset>
   <RimEmbark_Overlay>Podświetl</RimEmbark_Overlay>
   <RimEmbark_Search>Szukaj filtrów...</RimEmbark_Search>

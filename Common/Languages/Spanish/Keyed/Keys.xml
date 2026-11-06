@@ -8,6 +8,12 @@
   <RimEmbark_Matches>{0} de {1} lugares coinciden</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Al azar</RimEmbark_RandomMatch>
   <RimEmbark_RandomMatchTip>Selecciona un lugar coincidente al azar y mueve la cámara hasta él. Los lugares que ya has visto se omiten hasta que hayas visto todas las coincidencias.</RimEmbark_RandomMatchTip>
+  <RimEmbark_PreviousMatch>Lugar coincidente anterior</RimEmbark_PreviousMatch>
+  <RimEmbark_NextMatch>Lugar coincidente siguiente</RimEmbark_NextMatch>
+  <RimEmbark_Results>Lugares coincidentes: {0} / {1}</RimEmbark_Results>
+  <RimEmbark_ResultTile>Casilla {0}: {1}</RimEmbark_ResultTile>
+  <RimEmbark_PinTile>Fijar este lugar</RimEmbark_PinTile>
+  <RimEmbark_UnpinTile>Desfijar este lugar</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Restablecer</RimEmbark_Reset>
   <RimEmbark_Overlay>Resaltar</RimEmbark_Overlay>
   <RimEmbark_Search>Buscar filtros...</RimEmbark_Search>

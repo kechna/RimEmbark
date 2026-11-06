@@ -8,6 +8,12 @@
   <RimEmbark_Matches>Подходит: {0} из {1}</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Случайная</RimEmbark_RandomMatch>
   <RimEmbark_RandomMatchTip>Выбрать случайное подходящее место и перевести к нему камеру. Уже просмотренные места пропускаются, пока вы не увидите все совпадения.</RimEmbark_RandomMatchTip>
+  <RimEmbark_PreviousMatch>Предыдущее подходящее место</RimEmbark_PreviousMatch>
+  <RimEmbark_NextMatch>Следующее подходящее место</RimEmbark_NextMatch>
+  <RimEmbark_Results>Подходящие места: {0} / {1}</RimEmbark_Results>
+  <RimEmbark_ResultTile>Клетка {0}: {1}</RimEmbark_ResultTile>
+  <RimEmbark_PinTile>Закрепить это место</RimEmbark_PinTile>
+  <RimEmbark_UnpinTile>Открепить это место</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Сбросить</RimEmbark_Reset>
   <RimEmbark_Overlay>Подсветка</RimEmbark_Overlay>
   <RimEmbark_Search>Поиск фильтров...</RimEmbark_Search>

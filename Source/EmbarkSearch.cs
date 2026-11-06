@@ -10,14 +10,17 @@ namespace RimEmbark
         public static TileCache Cache;
 
         public static readonly List<int> Matches = new List<int>();
+        public static readonly List<int> OrderedMatches = new List<int>();
 
         // Bumped whenever Matches changes, so the overlay knows to rebuild its mesh.
         public static int ResultVersion;
 
         public static bool PageOpen;
 
-        // Tiles selected on this page, by hand or by JumpToRandomMatch, which it skips until every match was seen.
+        // Tiles selected on this page, which random selection skips until every match was seen.
         private static readonly HashSet<int> Visited = new HashSet<int>();
+        private static readonly HashSet<int> Pinned = new HashSet<int>();
+        private static readonly Dictionary<int, int> OrderedIndices = new Dictionary<int, int>();
 
         // Dragging a slider changes the filter every frame; recomputing and rebuilding the overlay mesh that often
         // stutters on large worlds.
@@ -33,6 +36,19 @@ namespace RimEmbark
         public static bool HasResults => Cache != null && Cache.Done && computedFilterVersion != -1;
 
         public static bool ShowOverlay => PageOpen && Filter.showOverlay && Filter.AnyActive && HasResults;
+
+        public static int SelectedMatchIndex
+        {
+            get
+            {
+                PlanetTile selected = Find.WorldSelector.SelectedTile;
+                if (Cache == null || !selected.Valid || selected.Layer != Cache.layer)
+                {
+                    return -1;
+                }
+                return OrderedIndices.TryGetValue(selected.tileId, out int index) ? index : -1;
+            }
+        }
 
         public static void OnPageOpened()
         {
@@ -51,7 +67,10 @@ namespace RimEmbark
             }
             Cache = new TileCache(world, surface);
             Visited.Clear();
+            Pinned.Clear();
             Matches.Clear();
+            OrderedMatches.Clear();
+            OrderedIndices.Clear();
             ResultVersion++;
             computedFilterVersion = -1;
         }
@@ -61,7 +80,10 @@ namespace RimEmbark
             PageOpen = false;
             Cache = null;
             Visited.Clear();
+            Pinned.Clear();
             Matches.Clear();
+            OrderedMatches.Clear();
+            OrderedIndices.Clear();
             ResultVersion++;
             RimEmbarkMod.Instance.WriteSettings();
         }
@@ -119,10 +141,58 @@ namespace RimEmbark
                     break;
                 }
             }
+            JumpToMatch(tileId);
+        }
+
+        public static void JumpToMatch(int tileId)
+        {
+            if (Cache == null || Matches.BinarySearch(tileId) < 0)
+            {
+                return;
+            }
             Visited.Add(tileId);
             PlanetTile tile = Cache.layer.PlanetTileForID(tileId);
             Find.WorldInterface.SelectedTile = tile;
             Find.WorldCameraDriver.JumpTo(tile);
+        }
+
+        public static bool IsPinned(int tileId) => Pinned.Contains(tileId);
+
+        public static void TogglePin(int tileId)
+        {
+            if (Matches.BinarySearch(tileId) < 0)
+            {
+                return;
+            }
+            if (!Pinned.Remove(tileId))
+            {
+                Pinned.Add(tileId);
+            }
+            RebuildOrder();
+        }
+
+        private static void RebuildOrder()
+        {
+            OrderedMatches.Clear();
+            OrderedIndices.Clear();
+            foreach (int id in Matches)
+            {
+                if (Pinned.Contains(id))
+                {
+                    OrderedMatches.Add(id);
+                }
+            }
+            foreach (int id in Matches)
+            {
+                if (!Pinned.Contains(id))
+                {
+                    OrderedMatches.Add(id);
+                }
+            }
+            for (int i = 0; i < OrderedMatches.Count; i++)
+            {
+                OrderedIndices[OrderedMatches[i]] = i;
+            }
         }
 
         private static int CountUnvisited()
@@ -173,6 +243,7 @@ namespace RimEmbark
                     Matches.Add(cache.tileIds[i]);
                 }
             }
+            RebuildOrder();
         }
 
         private static bool TileMatches(int index, List<RangeData> ranges, List<FloatRange> rangeValues, List<OptionMatcher> matchers)

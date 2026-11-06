@@ -8,6 +8,12 @@
   <RimEmbark_Matches>{0} de {1} locais correspondem</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Aleatório</RimEmbark_RandomMatch>
   <RimEmbark_RandomMatchTip>Seleciona um local correspondente aleatório e move a câmera até ele. Locais que você já viu são ignorados até que você tenha visto todos os resultados.</RimEmbark_RandomMatchTip>
+  <RimEmbark_PreviousMatch>Local correspondente anterior</RimEmbark_PreviousMatch>
+  <RimEmbark_NextMatch>Próximo local correspondente</RimEmbark_NextMatch>
+  <RimEmbark_Results>Locais correspondentes: {0} / {1}</RimEmbark_Results>
+  <RimEmbark_ResultTile>Terreno {0}: {1}</RimEmbark_ResultTile>
+  <RimEmbark_PinTile>Fixar este local</RimEmbark_PinTile>
+  <RimEmbark_UnpinTile>Desafixar este local</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Redefinir</RimEmbark_Reset>
   <RimEmbark_Overlay>Destacar</RimEmbark_Overlay>
   <RimEmbark_Search>Buscar filtros...</RimEmbark_Search>

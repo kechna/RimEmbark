@@ -8,6 +8,12 @@
   <RimEmbark_Matches>{0} sites sur {1} correspondent</RimEmbark_Matches>
   <RimEmbark_RandomMatch>Au hasard</RimEmbark_RandomMatch>
   <RimEmbark_RandomMatchTip>Sélectionne un site correspondant au hasard et y déplace la caméra. Les sites déjà consultés sont ignorés jusqu'à ce que vous ayez vu toutes les correspondances.</RimEmbark_RandomMatchTip>
+  <RimEmbark_PreviousMatch>Site correspondant précédent</RimEmbark_PreviousMatch>
+  <RimEmbark_NextMatch>Site correspondant suivant</RimEmbark_NextMatch>
+  <RimEmbark_Results>Sites correspondants : {0} / {1}</RimEmbark_Results>
+  <RimEmbark_ResultTile>Case {0} : {1}</RimEmbark_ResultTile>
+  <RimEmbark_PinTile>Épingler ce site</RimEmbark_PinTile>
+  <RimEmbark_UnpinTile>Désépingler ce site</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Réinitialiser</RimEmbark_Reset>
   <RimEmbark_Overlay>Surligner</RimEmbark_Overlay>
   <RimEmbark_Search>Rechercher un filtre...</RimEmbark_Search>
