@@ -42,7 +42,12 @@ namespace RimEmbark
                 return;
             }
             // FillTab draws the biome as the title, just above infoRect.
-            BiomeDef biome = Find.WorldGrid[Find.WorldSelector.SelectedTile].PrimaryBiome;
+            PlanetTile selected = Find.WorldSelector.SelectedTile;
+            if (!selected.Valid)
+            {
+                return;
+            }
+            BiomeDef biome = Find.WorldGrid[selected].PrimaryBiome;
             Text.Font = GameFont.Medium;
             Rect rect = new Rect(infoRect.x, infoRect.y - TitleHeight, Text.CalcSize(biome.LabelCap).x, Text.LineHeight);
             Text.Font = GameFont.Small;
@@ -105,6 +110,10 @@ namespace RimEmbark
                 return;
             }
             PlanetTile id = Find.WorldSelector.SelectedTile;
+            if (!id.Valid)
+            {
+                return;
+            }
             Tile tile = Find.WorldGrid[id];
             string hilliness = tile.hilliness.GetLabelCap();
             RoadDef road = (tile as SurfaceTile)?.Roads?.Select(r => r.road).MaxBy(r => r.priority);
