@@ -317,7 +317,8 @@ namespace RimEmbark
             Rect labelRect = new Rect(iconRect.xMax + 6f, rect.y, right - iconRect.xMax - 6f, HeaderHeight);
             Widgets.Label(labelRect, summary == null ? label : label + "  " + summary.Colorize(ColoredText.SubtleGrayColor));
             Text.Anchor = TextAnchor.UpperLeft;
-            if (Widgets.ButtonInvisible(labelRect))
+            // The arrow toggles too, not just the label.
+            if (Widgets.ButtonInvisible(new Rect(rect.x, rect.y, right - rect.x, HeaderHeight)))
             {
                 if (!Expanded.Remove(key))
                 {
