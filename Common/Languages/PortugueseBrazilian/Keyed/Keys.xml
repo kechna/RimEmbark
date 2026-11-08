@@ -58,6 +58,8 @@
   <RimEmbark_AnyLandmark>Qualquer marco</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Bioma extremo</RimEmbark_ExtremeBiome>
 
+  <RimEmbark_LimitToGravshipRange>Limitar ao alcance máximo</RimEmbark_LimitToGravshipRange>
+  <RimEmbark_LimitToGravshipRangeTip>Mostrar apenas locais que a gravinave consegue alcançar com seu alcance e combustível.</RimEmbark_LimitToGravshipRangeTip>
   <RimEmbark_ExcludeFactionTerritories>Ocultar locais em territórios de facções</RimEmbark_ExcludeFactionTerritories>
   <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories: oculta locais dentro do território de outra facção.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

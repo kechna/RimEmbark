@@ -24,9 +24,12 @@ namespace RimEmbark
 
         public bool excludeFactionTerritories = true;
 
+        public bool limitToGravshipRange = true;
+
         public int Version { get; private set; }
 
-        public bool AnyActive => options.Count > 0 || ranges.Count > 0 || (excludeFactionTerritories && FactionTerritoriesCompat.Active);
+        public bool AnyActive => options.Count > 0 || ranges.Count > 0 || (excludeFactionTerritories && FactionTerritoriesCompat.Active)
+            || (limitToGravshipRange && EmbarkSearch.GravshipRangeAvailable);
 
         public static string OptionKey(string criterion, string option)
         {
@@ -134,6 +137,12 @@ namespace RimEmbark
             Version++;
         }
 
+        public void SetLimitToGravshipRange(bool value)
+        {
+            limitToGravshipRange = value;
+            Version++;
+        }
+
         public void MarkChanged()
         {
             Version++;
@@ -146,6 +155,7 @@ namespace RimEmbark
             Scribe_Collections.Look(ref matchAll, "matchAll", LookMode.Value, LookMode.Value);
             Scribe_Values.Look(ref showOverlay, "showOverlay", true);
             Scribe_Values.Look(ref excludeFactionTerritories, "excludeFactionTerritories", true);
+            Scribe_Values.Look(ref limitToGravshipRange, "limitToGravshipRange", true);
             // Missing nodes (older or empty settings files) load as null.
             options ??= new Dictionary<string, FilterState>();
             ranges ??= new Dictionary<string, FloatRange>();

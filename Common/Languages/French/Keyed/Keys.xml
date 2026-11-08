@@ -58,6 +58,8 @@
   <RimEmbark_AnyLandmark>N'importe quel site remarquable</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Biome extrême</RimEmbark_ExtremeBiome>
 
+  <RimEmbark_LimitToGravshipRange>Limiter à la portée maximale</RimEmbark_LimitToGravshipRange>
+  <RimEmbark_LimitToGravshipRangeTip>N'afficher que les sites que le vaisseau gravitationnel peut atteindre avec sa portée et son carburant.</RimEmbark_LimitToGravshipRangeTip>
   <RimEmbark_ExcludeFactionTerritories>Masquer les sites dans les territoires de factions</RimEmbark_ExcludeFactionTerritories>
   <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories : masque les sites situés dans le territoire d'une autre faction.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

@@ -9,7 +9,7 @@ using Verse.Sound;
 
 namespace RimEmbark
 {
-    // On the starting-site page, the biome, terrain, stone, river, road, landmark and features in the terrain tab can
+    // While the filters are active, the biome, terrain, stone, river, road, landmark and features in the terrain tab can
     // be clicked to include or exclude them, and filtered ones are highlighted there and in the inspect pane.
     [HarmonyPatch]
     public static class Patch_TileInfo
@@ -37,7 +37,7 @@ namespace RimEmbark
         [HarmonyPatch(typeof(WITab_Terrain), "DrawScrollContents")]
         public static void DrawScrollContentsPrefix(Rect infoRect)
         {
-            if (!EmbarkSearch.PageOpen)
+            if (!EmbarkSearch.Active)
             {
                 return;
             }
@@ -63,7 +63,7 @@ namespace RimEmbark
         [HarmonyPatch(typeof(WITab_Terrain), "ListGeometricDetails")]
         public static void ListGeometricDetailsPrefix(Tile ws, PlanetTile tile)
         {
-            if (!EmbarkSearch.PageOpen)
+            if (!EmbarkSearch.Active)
             {
                 return;
             }
@@ -105,7 +105,7 @@ namespace RimEmbark
         [HarmonyPatch(typeof(WorldInspectPane), "TileInspectString", MethodType.Getter)]
         public static void TileInspectStringPostfix(ref string __result)
         {
-            if (!EmbarkSearch.PageOpen || __result == null)
+            if (!EmbarkSearch.Active || __result == null)
             {
                 return;
             }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
 using Verse;
@@ -15,7 +16,16 @@ namespace RimEmbark
         // Bumped whenever Matches changes, so the overlay knows to rebuild its mesh.
         public static int ResultVersion;
 
-        public static bool PageOpen;
+        public static EmbarkContext Context;
+
+        public static bool Active => Context != EmbarkContext.None;
+
+        public static CompPilotConsole GravshipConsole;
+
+        // Surface tiles the gravship can reach, by tile id; null outside the gravship screen.
+        private static bool[] gravshipRange;
+
+        public static bool GravshipRangeAvailable => Context == EmbarkContext.Gravship && GravshipConsole?.engine != null && !DebugSettings.ignoreGravshipRange;
 
         // Tiles selected on this page, which random selection skips until every match was seen.
         private static readonly HashSet<int> Visited = new HashSet<int>();
@@ -30,12 +40,12 @@ namespace RimEmbark
         private static int lastUpdateFrame = -1;
         private static float lastRecomputeTime = -1f;
 
-        public static EmbarkFilter Filter => RimEmbarkMod.Settings.filter;
+        public static EmbarkFilter Filter => RimEmbarkMod.Settings.FilterFor(Context);
 
         // Results can lag the filter by up to RecomputeInterval; showing the previous ones avoids flicker.
         public static bool HasResults => Cache != null && Cache.Done && computedFilterVersion != -1;
 
-        public static bool ShowOverlay => PageOpen && Filter.showOverlay && Filter.AnyActive && HasResults;
+        public static bool ShowOverlay => Active && Filter.showOverlay && Filter.AnyActive && HasResults;
 
         public static int SelectedMatchIndex
         {
@@ -50,11 +60,25 @@ namespace RimEmbark
             }
         }
 
-        public static void OnPageOpened()
+        public static void SetContext(EmbarkContext context)
         {
-            PageOpen = true;
-            EnsureCacheForCurrentWorld();
-            computedFilterVersion = -1;
+            if (context == Context)
+            {
+                return;
+            }
+            if (Active)
+            {
+                Find.WindowStack.TryRemove(typeof(Window_EmbarkFilters), doCloseSound: false);
+                OnClosed();
+            }
+            Context = context;
+            gravshipRange = null;
+            if (Active)
+            {
+                EnsureCacheForCurrentWorld();
+                computedFilterVersion = -1;
+                Find.WindowStack.Add(new Window_EmbarkFilters());
+            }
         }
 
         private static void EnsureCacheForCurrentWorld()
@@ -65,7 +89,7 @@ namespace RimEmbark
             {
                 return;
             }
-            Cache = new TileCache(world, surface);
+            Cache = new TileCache(world, surface, Context == EmbarkContext.Gravship);
             Visited.Clear();
             Pinned.Clear();
             Matches.Clear();
@@ -75,9 +99,9 @@ namespace RimEmbark
             computedFilterVersion = -1;
         }
 
-        public static void OnPageClosed()
+        private static void OnClosed()
         {
-            PageOpen = false;
+            Context = EmbarkContext.None;
             Cache = null;
             Visited.Clear();
             Pinned.Clear();
@@ -90,7 +114,7 @@ namespace RimEmbark
 
         public static void Update()
         {
-            if (!PageOpen || Cache == null || Time.frameCount == lastUpdateFrame)
+            if (!Active || Cache == null || Time.frameCount == lastUpdateFrame)
             {
                 return;
             }
@@ -152,8 +176,9 @@ namespace RimEmbark
             }
             Visited.Add(tileId);
             PlanetTile tile = Cache.layer.PlanetTileForID(tileId);
-            Find.WorldInterface.SelectedTile = tile;
+            // Jumping switches to the tile's layer, which clears the selection.
             Find.WorldCameraDriver.JumpTo(tile);
+            Find.WorldInterface.SelectedTile = tile;
         }
 
         public static bool IsPinned(int tileId) => Pinned.Contains(tileId);
@@ -237,9 +262,19 @@ namespace RimEmbark
             }
 
             bool[] territory = Filter.excludeFactionTerritories ? cache.inFactionTerritory : null;
+            bool[] reachable = null;
+            if (Filter.limitToGravshipRange && GravshipRangeAvailable)
+            {
+                gravshipRange ??= ComputeGravshipRange(cache.layer);
+                reachable = gravshipRange;
+            }
             for (int i = 0; i < cache.tileIds.Length; i++)
             {
                 if (territory != null && territory[i])
+                {
+                    continue;
+                }
+                if (reachable != null && !reachable[cache.tileIds[i]])
                 {
                     continue;
                 }
@@ -249,6 +284,37 @@ namespace RimEmbark
                 }
             }
             RebuildOrder();
+        }
+
+        // The same limits as the destination picker: the engine's range and the fuel for the path, which costs at
+        // least 50.
+        private static bool[] ComputeGravshipRange(PlanetLayer surface)
+        {
+            Building_GravEngine engine = GravshipConsole.engine;
+            PlanetTile origin = GravshipConsole.parent.Tile;
+            bool[] inRange = new bool[surface.TilesCount];
+            if (!origin.Valid || engine.TotalFuel < 50f)
+            {
+                return inRange;
+            }
+            int maxDistance = Mathf.Min(
+                Mathf.FloorToInt(engine.MaxLaunchDistance / surface.Def.rangeDistanceFactor),
+                GravshipUtility.MaxDistForFuel(engine.TotalFuel, origin.Layer, surface, 10f, engine.FuelUseageFactor));
+            if (maxDistance < 0)
+            {
+                return inRange;
+            }
+            PlanetTile start = origin.Layer == surface ? origin : surface.GetClosestTile_NewTemp(origin);
+            surface.Filler.FloodFill(start, _ => true, (PlanetTile tile, int distance) =>
+            {
+                if (distance > maxDistance)
+                {
+                    return true;
+                }
+                inRange[tile.tileId] = true;
+                return false;
+            });
+            return inRange;
         }
 
         private static bool TileMatches(int index, List<RangeData> ranges, List<FloatRange> rangeValues, List<OptionMatcher> matchers)

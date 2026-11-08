@@ -109,6 +109,8 @@ namespace RimEmbark
 
         public readonly World world;
         public readonly PlanetLayer layer;
+        // Gravships can land next to settlements, on camps and on some sites.
+        public readonly bool forGravship;
         public int[] tileIds;
         public readonly List<RangeData> ranges = new List<RangeData>();
         public readonly List<OptionData> options = new List<OptionData>();
@@ -135,10 +137,11 @@ namespace RimEmbark
 
         public int Count => tileIds?.Length ?? 0;
 
-        public TileCache(World world, PlanetLayer layer)
+        public TileCache(World world, PlanetLayer layer, bool forGravship)
         {
             this.world = world;
             this.layer = layer;
+            this.forGravship = forGravship;
             foreach (RangeCriterion criterion in Criteria.Ranges)
             {
                 if (criterion.available())
@@ -187,7 +190,7 @@ namespace RimEmbark
         private void AddTile(int tileId)
         {
             PlanetTile id = layer.PlanetTileForID(tileId);
-            if (!(layer[tileId] is SurfaceTile tile) || settlementDistance[tileId] < 2)
+            if (!(layer[tileId] is SurfaceTile tile) || (!forGravship && settlementDistance[tileId] < 2))
             {
                 return;
             }
@@ -195,7 +198,7 @@ namespace RimEmbark
             {
                 return;
             }
-            if (!TileFinder.IsValidTileForNewSettlement(id))
+            if (!TileFinder.IsValidTileForNewSettlement(id, null, forGravship))
             {
                 return;
             }

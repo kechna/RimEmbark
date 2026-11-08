@@ -58,6 +58,8 @@
   <RimEmbark_AnyLandmark>Dowolny punkt orientacyjny</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Ekstremalny biom</RimEmbark_ExtremeBiome>
 
+  <RimEmbark_LimitToGravshipRange>Ogranicz do maksymalnego zasięgu</RimEmbark_LimitToGravshipRange>
+  <RimEmbark_LimitToGravshipRangeTip>Pokazuj tylko miejsca, do których grawstatek może dotrzeć przy swoim zasięgu i paliwie.</RimEmbark_LimitToGravshipRangeTip>
   <RimEmbark_ExcludeFactionTerritories>Ukryj miejsca na terytoriach frakcji</RimEmbark_ExcludeFactionTerritories>
   <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories: ukrywa miejsca na terytorium innej frakcji.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

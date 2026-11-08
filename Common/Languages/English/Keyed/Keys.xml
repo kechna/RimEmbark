@@ -60,6 +60,8 @@
   <RimEmbark_AnyLandmark>Any landmark</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Extreme biome</RimEmbark_ExtremeBiome>
 
+  <RimEmbark_LimitToGravshipRange>Limit to maximum range</RimEmbark_LimitToGravshipRange>
+  <RimEmbark_LimitToGravshipRangeTip>Only show sites the gravship can reach with its range and fuel.</RimEmbark_LimitToGravshipRangeTip>
   <RimEmbark_ExcludeFactionTerritories>Hide sites in faction territories</RimEmbark_ExcludeFactionTerritories>
   <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories: hide sites inside another faction's territory.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

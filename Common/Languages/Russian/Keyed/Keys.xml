@@ -58,6 +58,8 @@
   <RimEmbark_AnyLandmark>Любая достопримечательность</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Экстремальный биом</RimEmbark_ExtremeBiome>
 
+  <RimEmbark_LimitToGravshipRange>Ограничить максимальной дальностью</RimEmbark_LimitToGravshipRange>
+  <RimEmbark_LimitToGravshipRangeTip>Показывать только места, до которых гравикорабль может долететь с его дальностью и топливом.</RimEmbark_LimitToGravshipRangeTip>
   <RimEmbark_ExcludeFactionTerritories>Скрыть места на территориях фракций</RimEmbark_ExcludeFactionTerritories>
   <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories: скрывает места на территории другой фракции.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

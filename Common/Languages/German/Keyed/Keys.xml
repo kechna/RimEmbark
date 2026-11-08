@@ -58,6 +58,8 @@
   <RimEmbark_AnyLandmark>Beliebiges Wahrzeichen</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Extremes Biom</RimEmbark_ExtremeBiome>
 
+  <RimEmbark_LimitToGravshipRange>Auf maximale Reichweite begrenzen</RimEmbark_LimitToGravshipRange>
+  <RimEmbark_LimitToGravshipRangeTip>Nur Orte anzeigen, die das Gravschiff mit seiner Reichweite und seinem Treibstoff erreichen kann.</RimEmbark_LimitToGravshipRangeTip>
   <RimEmbark_ExcludeFactionTerritories>Orte in Fraktionsgebieten ausblenden</RimEmbark_ExcludeFactionTerritories>
   <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories: Orte im Gebiet einer anderen Fraktion ausblenden.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

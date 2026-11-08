@@ -182,6 +182,7 @@ namespace RimEmbark
             visibleTop = scrollPosition.y;
             visibleBottom = scrollPosition.y + outRect.height;
             float curY = 0f;
+            DrawGravshipRange(viewRect.width, ref curY);
             DrawFactionTerritories(cache, viewRect.width, ref curY);
             DrawRanges(cache, viewRect.width, ref curY);
             foreach (OptionData data in cache.options)
@@ -328,6 +329,28 @@ namespace RimEmbark
             }
             y += HeaderHeight + Gap;
             return expanded;
+        }
+
+        private void DrawGravshipRange(float width, ref float y)
+        {
+            if (!EmbarkSearch.GravshipRangeAvailable)
+            {
+                return;
+            }
+            string label = "RimEmbark_LimitToGravshipRange".Translate();
+            if (!MatchesSearch(label))
+            {
+                return;
+            }
+            Rect rect = new Rect(6f, y, width - 6f, RowHeight);
+            bool limit = Filter.limitToGravshipRange;
+            Widgets.CheckboxLabeled(rect, label, ref limit);
+            TooltipHandler.TipRegion(rect, "RimEmbark_LimitToGravshipRangeTip".Translate());
+            if (limit != Filter.limitToGravshipRange)
+            {
+                Filter.SetLimitToGravshipRange(limit);
+            }
+            y += RowHeight + Gap * 2;
         }
 
         private void DrawFactionTerritories(TileCache cache, float width, ref float y)
