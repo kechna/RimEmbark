@@ -236,8 +236,13 @@ namespace RimEmbark
                 }
             }
 
+            bool[] territory = Filter.excludeFactionTerritories ? cache.inFactionTerritory : null;
             for (int i = 0; i < cache.tileIds.Length; i++)
             {
+                if (territory != null && territory[i])
+                {
+                    continue;
+                }
                 if (TileMatches(i, activeRanges, rangeValues, matchers))
                 {
                     Matches.Add(cache.tileIds[i]);

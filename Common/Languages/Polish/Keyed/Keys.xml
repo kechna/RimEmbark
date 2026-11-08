@@ -57,4 +57,7 @@
   <RimEmbark_AnyRoad>Dowolna droga</RimEmbark_AnyRoad>
   <RimEmbark_AnyLandmark>Dowolny punkt orientacyjny</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Ekstremalny biom</RimEmbark_ExtremeBiome>
+
+  <RimEmbark_ExcludeFactionTerritories>Ukryj miejsca na terytoriach frakcji</RimEmbark_ExcludeFactionTerritories>
+  <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories: ukrywa miejsca na terytorium innej frakcji.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

@@ -57,4 +57,7 @@
   <RimEmbark_AnyRoad>任意道路</RimEmbark_AnyRoad>
   <RimEmbark_AnyLandmark>任意地标</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>极端生物群系</RimEmbark_ExtremeBiome>
+
+  <RimEmbark_ExcludeFactionTerritories>隐藏派系领地内的地点</RimEmbark_ExcludeFactionTerritories>
+  <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories：隐藏位于其他派系领地内的地点。</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

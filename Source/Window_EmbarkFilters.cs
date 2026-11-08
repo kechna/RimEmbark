@@ -182,6 +182,7 @@ namespace RimEmbark
             visibleTop = scrollPosition.y;
             visibleBottom = scrollPosition.y + outRect.height;
             float curY = 0f;
+            DrawFactionTerritories(cache, viewRect.width, ref curY);
             DrawRanges(cache, viewRect.width, ref curY);
             foreach (OptionData data in cache.options)
             {
@@ -326,6 +327,28 @@ namespace RimEmbark
             }
             y += HeaderHeight + Gap;
             return expanded;
+        }
+
+        private void DrawFactionTerritories(TileCache cache, float width, ref float y)
+        {
+            if (cache.inFactionTerritory == null)
+            {
+                return;
+            }
+            string label = "RimEmbark_ExcludeFactionTerritories".Translate();
+            if (!MatchesSearch(label))
+            {
+                return;
+            }
+            Rect rect = new Rect(6f, y, width - 6f, RowHeight);
+            bool exclude = Filter.excludeFactionTerritories;
+            Widgets.CheckboxLabeled(rect, label, ref exclude);
+            TooltipHandler.TipRegion(rect, "RimEmbark_ExcludeFactionTerritoriesTip".Translate());
+            if (exclude != Filter.excludeFactionTerritories)
+            {
+                Filter.SetExcludeFactionTerritories(exclude);
+            }
+            y += RowHeight + Gap * 2;
         }
 
         private void DrawRanges(TileCache cache, float width, ref float y)

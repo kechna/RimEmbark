@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using RimWorld;
@@ -111,12 +112,16 @@ namespace RimEmbark
         public int[] tileIds;
         public readonly List<RangeData> ranges = new List<RangeData>();
         public readonly List<OptionData> options = new List<OptionData>();
+        // Per cached tile; null without Faction Territories.
+        public bool[] inFactionTerritory;
 
         private readonly List<int> buildingTileIds = new List<int>();
         private readonly List<List<float>> buildingRanges = new List<List<float>>();
         private readonly TileInfo info = new TileInfo();
         private readonly Stopwatch stopwatch = new Stopwatch();
         private int[] settlementDistance;
+        private IDictionary claimedTiles;
+        private readonly List<bool> buildingTerritory = new List<bool>();
         private int nextTile;
 
         // Same sampling as GenTemperature, but independent of the tile so it's computed once.
@@ -162,6 +167,7 @@ namespace RimEmbark
                 // A flood fill over the whole planet; give it a frame of its own.
                 InitSeasonFactors();
                 settlementDistance = ComputeSettlementDistances();
+                claimedTiles = FactionTerritoriesCompat.ClaimedTiles();
                 return;
             }
             stopwatch.Restart();
@@ -200,6 +206,10 @@ namespace RimEmbark
             FillClimate(info);
 
             buildingTileIds.Add(tileId);
+            if (claimedTiles != null)
+            {
+                buildingTerritory.Add(FactionTerritoriesCompat.IsClaimed(claimedTiles, tileId));
+            }
             for (int i = 0; i < ranges.Count; i++)
             {
                 buildingRanges[i].Add(ranges[i].criterion.value(info));
@@ -243,7 +253,12 @@ namespace RimEmbark
             {
                 option.Finish();
             }
+            if (claimedTiles != null)
+            {
+                inFactionTerritory = buildingTerritory.ToArray();
+            }
             settlementDistance = null;
+            claimedTiles = null;
             Done = true;
         }
 

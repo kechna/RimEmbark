@@ -22,9 +22,11 @@ namespace RimEmbark
 
         public bool showOverlay = true;
 
+        public bool excludeFactionTerritories = true;
+
         public int Version { get; private set; }
 
-        public bool AnyActive => options.Count > 0 || ranges.Count > 0;
+        public bool AnyActive => options.Count > 0 || ranges.Count > 0 || (excludeFactionTerritories && FactionTerritoriesCompat.Active);
 
         public static string OptionKey(string criterion, string option)
         {
@@ -126,6 +128,12 @@ namespace RimEmbark
             Version++;
         }
 
+        public void SetExcludeFactionTerritories(bool value)
+        {
+            excludeFactionTerritories = value;
+            Version++;
+        }
+
         public void MarkChanged()
         {
             Version++;
@@ -137,6 +145,7 @@ namespace RimEmbark
             Scribe_Collections.Look(ref ranges, "ranges", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look(ref matchAll, "matchAll", LookMode.Value, LookMode.Value);
             Scribe_Values.Look(ref showOverlay, "showOverlay", true);
+            Scribe_Values.Look(ref excludeFactionTerritories, "excludeFactionTerritories", true);
             // Missing nodes (older or empty settings files) load as null.
             options ??= new Dictionary<string, FilterState>();
             ranges ??= new Dictionary<string, FloatRange>();

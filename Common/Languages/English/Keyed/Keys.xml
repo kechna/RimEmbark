@@ -59,4 +59,7 @@
   <RimEmbark_AnyRoad>Any road</RimEmbark_AnyRoad>
   <RimEmbark_AnyLandmark>Any landmark</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Extreme biome</RimEmbark_ExtremeBiome>
+
+  <RimEmbark_ExcludeFactionTerritories>Hide sites in faction territories</RimEmbark_ExcludeFactionTerritories>
+  <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories: hide sites inside another faction's territory.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

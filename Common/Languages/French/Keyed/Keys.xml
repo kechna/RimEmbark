@@ -57,4 +57,7 @@
   <RimEmbark_AnyRoad>N'importe quelle route</RimEmbark_AnyRoad>
   <RimEmbark_AnyLandmark>N'importe quel site remarquable</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Biome extrême</RimEmbark_ExtremeBiome>
+
+  <RimEmbark_ExcludeFactionTerritories>Masquer les sites dans les territoires de factions</RimEmbark_ExcludeFactionTerritories>
+  <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories : masque les sites situés dans le territoire d'une autre faction.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>

@@ -57,4 +57,7 @@
   <RimEmbark_AnyRoad>Любая дорога</RimEmbark_AnyRoad>
   <RimEmbark_AnyLandmark>Любая достопримечательность</RimEmbark_AnyLandmark>
   <RimEmbark_ExtremeBiome>Экстремальный биом</RimEmbark_ExtremeBiome>
+
+  <RimEmbark_ExcludeFactionTerritories>Скрыть места на территориях фракций</RimEmbark_ExcludeFactionTerritories>
+  <RimEmbark_ExcludeFactionTerritoriesTip>Faction Territories: скрывает места на территории другой фракции.</RimEmbark_ExcludeFactionTerritoriesTip>
 </LanguageData>
