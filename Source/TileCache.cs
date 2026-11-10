@@ -26,7 +26,9 @@ namespace RimEmbark
         public readonly List<string> labels = new List<string>();
         public readonly List<string> tooltips = new List<string>();
         public readonly List<int> counts = new List<int>();
-        public int[][] tileValues;
+        // The options of cached tile i are values[tileStart[i]..tileStart[i + 1]); flat, since caches are kept.
+        public int[] tileStart;
+        public int[] values;
 
         // Options sorted by label, for display.
         public int[] order;
@@ -34,7 +36,8 @@ namespace RimEmbark
         private readonly Dictionary<string, int> indexByKey = new Dictionary<string, int>();
         private readonly Dictionary<string, int> indexByLabel = new Dictionary<string, int>();
         private readonly List<int> current = new List<int>();
-        private List<int[]> building = new List<int[]>();
+        private List<int> buildingStart = new List<int> { 0 };
+        private List<int> buildingValues = new List<int>();
 
         public List<string> FilterKeys(string key)
         {
@@ -48,7 +51,8 @@ namespace RimEmbark
 
         public void EndTile()
         {
-            building.Add(current.Count == 0 ? Array.Empty<int>() : current.ToArray());
+            buildingValues.AddRange(current);
+            buildingStart.Add(buildingValues.Count);
         }
 
         public void Add(Def def)
@@ -90,8 +94,10 @@ namespace RimEmbark
 
         public void Finish()
         {
-            tileValues = building.ToArray();
-            building = null;
+            tileStart = buildingStart.ToArray();
+            values = buildingValues.ToArray();
+            buildingStart = null;
+            buildingValues = null;
             List<int> sorted = new List<int>();
             for (int i = 0; i < keys.Count; i++)
             {
@@ -111,11 +117,14 @@ namespace RimEmbark
         public readonly PlanetLayer layer;
         // Gravships can land next to settlements, on camps and on some sites.
         public readonly bool forGravship;
+        // The world objects the cached tiles depend on, when it was built.
+        public readonly int worldObjectsHash;
         public int[] tileIds;
         public readonly List<RangeData> ranges = new List<RangeData>();
         public readonly List<OptionData> options = new List<OptionData>();
         // Per cached tile; null without Faction Territories.
         public bool[] inFactionTerritory;
+        private int territoryRevision = -1;
 
         private readonly List<int> buildingTileIds = new List<int>();
         private readonly List<List<float>> buildingRanges = new List<List<float>>();
@@ -142,6 +151,7 @@ namespace RimEmbark
             this.world = world;
             this.layer = layer;
             this.forGravship = forGravship;
+            worldObjectsHash = WorldObjectsHash(layer);
             foreach (RangeCriterion criterion in Criteria.Ranges)
             {
                 if (criterion.available())
@@ -159,6 +169,66 @@ namespace RimEmbark
             }
         }
 
+        // Settleability and settlement distances only change with these objects, so a cache built for the same world
+        // and objects can be kept between screens. Caravans and other moving objects can have a map and don't count.
+        public static int WorldObjectsHash(PlanetLayer layer)
+        {
+            int hash = 17;
+            foreach (WorldObject worldObject in Find.WorldObjects.AllWorldObjects)
+            {
+                PlanetTile tile = worldObject.Tile;
+                if (!tile.Valid || tile.Layer != layer)
+                {
+                    continue;
+                }
+                if (worldObject is MapParent || worldObject is PeaceTalks || !worldObject.def.canHaveMap)
+                {
+                    hash = Gen.HashCombineInt(hash, worldObject.ID);
+                    hash = Gen.HashCombineInt(hash, tile.tileId);
+                }
+            }
+            return hash;
+        }
+
+        public bool IsCurrent(World world, PlanetLayer layer)
+        {
+            return this.world == world && this.layer == layer && worldObjectsHash == WorldObjectsHash(layer);
+        }
+
+        // Rereads what changes without world objects changing, for a cache reused on a later screen.
+        public void Refresh()
+        {
+            if (!Done)
+            {
+                return;
+            }
+            foreach (RangeData data in ranges)
+            {
+                if (!data.criterion.changesInGame)
+                {
+                    continue;
+                }
+                for (int i = 0; i < tileIds.Length; i++)
+                {
+                    info.id = layer.PlanetTileForID(tileIds[i]);
+                    info.tile = (SurfaceTile)layer[tileIds[i]];
+                    data.values[i] = data.criterion.value(info);
+                }
+                SetBounds(data);
+            }
+            info.tile = null;
+            IDictionary claimed = FactionTerritoriesCompat.ClaimedTiles(out int revision);
+            if (claimed != null && (revision != territoryRevision || revision == -1))
+            {
+                territoryRevision = revision;
+                inFactionTerritory = new bool[tileIds.Length];
+                for (int i = 0; i < tileIds.Length; i++)
+                {
+                    inFactionTerritory[i] = FactionTerritoriesCompat.IsClaimed(claimed, tileIds[i]);
+                }
+            }
+        }
+
         public void Step()
         {
             if (Done)
@@ -170,7 +240,7 @@ namespace RimEmbark
                 // A flood fill over the whole planet; give it a frame of its own.
                 InitSeasonFactors();
                 settlementDistance = ComputeSettlementDistances();
-                claimedTiles = FactionTerritoriesCompat.ClaimedTiles();
+                claimedTiles = FactionTerritoriesCompat.ClaimedTiles(out territoryRevision);
                 return;
             }
             stopwatch.Restart();
@@ -232,25 +302,7 @@ namespace RimEmbark
             {
                 RangeData data = ranges[i];
                 data.values = buildingRanges[i].ToArray();
-                float min = float.MaxValue;
-                float max = float.MinValue;
-                foreach (float value in data.values)
-                {
-                    min = Mathf.Min(min, value);
-                    max = Mathf.Max(max, value);
-                }
-                if (data.values.Length == 0)
-                {
-                    min = 0f;
-                    max = 1f;
-                }
-                float step = data.criterion.step;
-                data.min = Mathf.Floor(min / step) * step;
-                data.max = Mathf.Ceil(max / step) * step;
-                if (data.max <= data.min)
-                {
-                    data.max = data.min + step;
-                }
+                SetBounds(data);
             }
             foreach (OptionData option in options)
             {
@@ -260,9 +312,39 @@ namespace RimEmbark
             {
                 inFactionTerritory = buildingTerritory.ToArray();
             }
+            // Kept caches outlive the build; don't hold a second copy of every value.
+            buildingTileIds.Clear();
+            buildingTileIds.Capacity = 0;
+            buildingRanges.Clear();
+            buildingTerritory.Clear();
+            buildingTerritory.Capacity = 0;
             settlementDistance = null;
             claimedTiles = null;
+            info.tile = null;
             Done = true;
+        }
+
+        private static void SetBounds(RangeData data)
+        {
+            float min = float.MaxValue;
+            float max = float.MinValue;
+            foreach (float value in data.values)
+            {
+                min = Mathf.Min(min, value);
+                max = Mathf.Max(max, value);
+            }
+            if (data.values.Length == 0)
+            {
+                min = 0f;
+                max = 1f;
+            }
+            float step = data.criterion.step;
+            data.min = Mathf.Floor(min / step) * step;
+            data.max = Mathf.Ceil(max / step) * step;
+            if (data.max <= data.min)
+            {
+                data.max = data.min + step;
+            }
         }
 
         private static void FillClimate(TileInfo info)

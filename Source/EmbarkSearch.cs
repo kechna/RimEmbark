@@ -10,6 +10,10 @@ namespace RimEmbark
     {
         public static TileCache Cache;
 
+        // In game the world only changes through its objects, so the gravship and caravan screens keep their cache
+        // after closing. The starting site page doesn't: going back can generate another world.
+        private static readonly Dictionary<EmbarkContext, TileCache> Kept = new Dictionary<EmbarkContext, TileCache>();
+
         public static readonly List<int> Matches = new List<int>();
         public static readonly List<int> OrderedMatches = new List<int>();
 
@@ -89,7 +93,7 @@ namespace RimEmbark
             {
                 return;
             }
-            Cache = new TileCache(world, surface, Context == EmbarkContext.Gravship);
+            Cache = TakeKept(world, surface) ?? new TileCache(world, surface, Context == EmbarkContext.Gravship);
             Visited.Clear();
             Pinned.Clear();
             Matches.Clear();
@@ -99,8 +103,32 @@ namespace RimEmbark
             computedFilterVersion = -1;
         }
 
+        private static TileCache TakeKept(World world, PlanetLayer surface)
+        {
+            if (!Kept.TryGetValue(Context, out TileCache cache))
+            {
+                return null;
+            }
+            Kept.Remove(Context);
+            if (!cache.IsCurrent(world, surface))
+            {
+                return null;
+            }
+            cache.Refresh();
+            return cache;
+        }
+
+        public static void ClearKept()
+        {
+            Kept.Clear();
+        }
+
         private static void OnClosed()
         {
+            if (Cache != null && (Context == EmbarkContext.Gravship || Context == EmbarkContext.Caravan))
+            {
+                Kept[Context] = Cache;
+            }
             Context = EmbarkContext.None;
             Cache = null;
             Visited.Clear();
@@ -373,11 +401,12 @@ namespace RimEmbark
 
             public bool Matches(int index)
             {
-                int[] values = data.tileValues[index];
+                int[] values = data.values;
+                int end = data.tileStart[index + 1];
                 int includedHere = 0;
-                foreach (int value in values)
+                for (int i = data.tileStart[index]; i < end; i++)
                 {
-                    FilterState state = states[value];
+                    FilterState state = states[values[i]];
                     if (state == FilterState.Exclude)
                     {
                         return false;

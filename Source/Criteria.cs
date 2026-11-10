@@ -26,6 +26,8 @@ namespace RimEmbark
         public float step;
         public Func<TileInfo, float> value;
         public Func<bool> available = () => true;
+        // Read again when a kept cache is reused; value may only use id and tile.
+        public bool changesInGame;
     }
 
     public class OptionCriterion
@@ -93,7 +95,7 @@ namespace RimEmbark
             new RangeCriterion
             {
                 key = "Pollution", labelKey = "RimEmbark_Pollution", style = ToStringStyle.PercentZero, step = 0.01f,
-                value = t => t.tile.pollution, available = () => ModsConfig.BiotechActive,
+                value = t => t.tile.pollution, available = () => ModsConfig.BiotechActive, changesInGame = true,
             },
             new RangeCriterion
             {

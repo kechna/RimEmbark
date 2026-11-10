@@ -10,9 +10,10 @@ namespace RimEmbark
     {
         public static readonly bool Active = ModsConfig.IsActive("jaeger972.factionterritories");
 
-        // Surface tile id -> claiming faction ids, or null when unavailable.
-        public static IDictionary ClaimedTiles()
+        // Surface tile id -> claiming faction ids, or null when unavailable. The revision changes when it's rebuilt.
+        public static IDictionary ClaimedTiles(out int revision)
         {
+            revision = -1;
             if (!Active)
             {
                 return null;
@@ -24,10 +25,18 @@ namespace RimEmbark
                 {
                     return null;
                 }
-                // It's only marked dirty by game components, which don't run before the game starts, so it could
-                // still hold a previous world.
-                AccessTools.Method(cache, "MarkDirty")?.Invoke(null, null);
-                return AccessTools.Method(cache, "TryGetFactionMapUnsafeForMainThreadOnly")?.Invoke(null, null) as IDictionary;
+                // Its game components keep it current in game. Before that it's never marked dirty, so it could still
+                // hold a previous world.
+                if (Current.ProgramState != ProgramState.Playing)
+                {
+                    AccessTools.Method(cache, "MarkDirty")?.Invoke(null, null);
+                }
+                IDictionary claimed = AccessTools.Method(cache, "TryGetFactionMapUnsafeForMainThreadOnly")?.Invoke(null, null) as IDictionary;
+                if (AccessTools.Method(cache, "TryGetRevisionUnsafeForMainThreadOnly")?.Invoke(null, null) is int value)
+                {
+                    revision = value;
+                }
+                return claimed;
             }
             catch (Exception e)
             {
