@@ -15,6 +15,7 @@
   <RimEmbark_PinTile>Pin this site</RimEmbark_PinTile>
   <RimEmbark_UnpinTile>Unpin this site</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Reset</RimEmbark_Reset>
+  <RimEmbark_ShowOnMapTip>Show the embark filters and highlighted sites</RimEmbark_ShowOnMapTip>
   <RimEmbark_Overlay>Highlight</RimEmbark_Overlay>
   <RimEmbark_Search>Search filters...</RimEmbark_Search>
   <RimEmbark_ClearCategory>Clear this category</RimEmbark_ClearCategory>

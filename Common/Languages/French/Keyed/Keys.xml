@@ -15,6 +15,7 @@
   <RimEmbark_PinTile>Épingler ce site</RimEmbark_PinTile>
   <RimEmbark_UnpinTile>Désépingler ce site</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Réinitialiser</RimEmbark_Reset>
+  <RimEmbark_ShowOnMapTip>Afficher les filtres d'embarquement et les sites surlignés</RimEmbark_ShowOnMapTip>
   <RimEmbark_Overlay>Surligner</RimEmbark_Overlay>
   <RimEmbark_Search>Rechercher un filtre...</RimEmbark_Search>
   <RimEmbark_ClearCategory>Vider cette catégorie</RimEmbark_ClearCategory>

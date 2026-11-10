@@ -15,6 +15,7 @@
   <RimEmbark_PinTile>Закрепить это место</RimEmbark_PinTile>
   <RimEmbark_UnpinTile>Открепить это место</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Сбросить</RimEmbark_Reset>
+  <RimEmbark_ShowOnMapTip>Показывать фильтры высадки и подсвеченные места</RimEmbark_ShowOnMapTip>
   <RimEmbark_Overlay>Подсветка</RimEmbark_Overlay>
   <RimEmbark_Search>Поиск фильтров...</RimEmbark_Search>
   <RimEmbark_ClearCategory>Очистить категорию</RimEmbark_ClearCategory>

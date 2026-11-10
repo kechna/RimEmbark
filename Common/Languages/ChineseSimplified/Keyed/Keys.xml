@@ -15,6 +15,7 @@
   <RimEmbark_PinTile>置顶此地点</RimEmbark_PinTile>
   <RimEmbark_UnpinTile>取消置顶此地点</RimEmbark_UnpinTile>
   <RimEmbark_Reset>重置</RimEmbark_Reset>
+  <RimEmbark_ShowOnMapTip>显示登陆筛选和高亮地点</RimEmbark_ShowOnMapTip>
   <RimEmbark_Overlay>高亮</RimEmbark_Overlay>
   <RimEmbark_Search>搜索筛选项...</RimEmbark_Search>
   <RimEmbark_ClearCategory>清除此类别</RimEmbark_ClearCategory>

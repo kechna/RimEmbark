@@ -19,6 +19,9 @@ namespace RimEmbark
     [HarmonyPatch(typeof(WorldInterface))]
     public static class Patch_WorldInterface
     {
+        // The current screen, even while the UI is hidden from the map toggles.
+        public static EmbarkContext AvailableContext;
+
         [HarmonyPostfix]
         [HarmonyPatch(nameof(WorldInterface.WorldInterfaceUpdate))]
         public static void WorldInterfaceUpdate()
@@ -43,6 +46,12 @@ namespace RimEmbark
         }
 
         private static EmbarkContext CurrentContext()
+        {
+            AvailableContext = DetectContext();
+            return RimEmbarkMod.Settings.showFilters ? AvailableContext : EmbarkContext.None;
+        }
+
+        private static EmbarkContext DetectContext()
         {
             if (Current.ProgramState != ProgramState.Playing)
             {

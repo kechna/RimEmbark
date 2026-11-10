@@ -9,6 +9,9 @@ namespace RimEmbark
         public EmbarkFilter gravshipFilter = new EmbarkFilter();
         public EmbarkFilter caravanFilter = new EmbarkFilter();
 
+        // Toggled from the world map's visibility icons; hides the whole filter UI.
+        public bool showFilters = true;
+
         public EmbarkFilter FilterFor(EmbarkContext context)
         {
             switch (context)
@@ -25,6 +28,7 @@ namespace RimEmbark
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look(ref showFilters, "showFilters", true);
             Scribe_Deep.Look(ref filter, "filter");
             Scribe_Deep.Look(ref gravshipFilter, "gravshipFilter");
             Scribe_Deep.Look(ref caravanFilter, "caravanFilter");

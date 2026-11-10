@@ -15,6 +15,7 @@
   <RimEmbark_PinTile>Fijar este lugar</RimEmbark_PinTile>
   <RimEmbark_UnpinTile>Desfijar este lugar</RimEmbark_UnpinTile>
   <RimEmbark_Reset>Restablecer</RimEmbark_Reset>
+  <RimEmbark_ShowOnMapTip>Mostrar los filtros de embarque y los sitios resaltados</RimEmbark_ShowOnMapTip>
   <RimEmbark_Overlay>Resaltar</RimEmbark_Overlay>
   <RimEmbark_Search>Buscar filtros...</RimEmbark_Search>
   <RimEmbark_ClearCategory>Vaciar esta categoría</RimEmbark_ClearCategory>

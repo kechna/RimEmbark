@@ -10,6 +10,7 @@ namespace RimEmbark
         [HarmonyPostfix]
         public static void PostClose()
         {
+            Patch_WorldInterface.AvailableContext = EmbarkContext.None;
             EmbarkSearch.SetContext(EmbarkContext.None);
         }
     }
